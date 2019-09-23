@@ -1,0 +1,16 @@
+{
+  "name": "sparklines",
+  "version": "1.0.0",
+  "description": "A tiny, simple sparkline generator in JavaScript.",
+  "main": "dist/index.js",
+  "author": "Aaron Moradi",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc src/index.ts --outDir ./dist"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "typescript": "^3.6.3"
+  }
+}
