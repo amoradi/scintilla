@@ -1,5 +1,5 @@
 import React from 'react';
-import { Data, Fill, Stroke } from '../../types';
+import { Data, Fill, Stroke } from '../../shared/types';
 
 type Props = { data: Data; fill?: Fill; stroke?: Stroke };
 

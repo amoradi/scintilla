@@ -22,9 +22,9 @@ function App() {
       </header> */}
       <main>
         <div style={{ background: 'red' }}>
-          <Frame height={151} >
-            <Bar data={[1, 2, 3]} />
-            <Line data={[1, 2, 3]} />
+          <Frame height={100} >
+            <Bar data={[1, 2, 3, 90]} />
+            <Line data={[1, 2, 3, 90]} />
           </Frame>
         </div>
       </main>

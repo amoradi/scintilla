@@ -1,7 +1,7 @@
 import React from 'react';
-import { Data, Fill, Stroke } from '../../types';
+import { Data, Fill, Stroke } from '../../shared/types';
 import { FrameContext } from '../Frame';
-
+import { getYPixel, sanitizeYData } from '../../shared/utils';
 
 // export type Data = number[];
 // export type Fill = RGBA[];
@@ -12,6 +12,7 @@ import { FrameContext } from '../Frame';
 // };
 
 // (1) prep data
+// filter for numbers
 // yRange: filter out those items not within range bounds. if yRange is null, use all of data
 // height: use to map data value to y pixel position
 // ...and create points translated to frame: [idx, yMappedToChartHeight][]
@@ -40,21 +41,17 @@ const Line = ({ data, fill, stroke }: Props) => {
   return (
     <FrameContext.Consumer>
       { ({ height, yRange }) => {
+        const yData = sanitizeYData(data, yRange);
+
+        let [ min, max ] = yRange ? yRange : [ Math.min(...yData), Math.max(...yData)];
+        const yPixels = yData.map((y) => {
+          return getYPixel(height, { y, min, max });
+        });
+
+        console.log(yPixels);
         return (
           <path
-            // // I'm sure there's a better way >_<, but for time
-            // // https://github.com/microsoft/TypeScript/issues/16019
-            // ref={
-            //   ((pathRef: SVGPathElement): PathRef => {
-            //     if (pathRef) return (this.pathRef = (pathRef as unknown) as PathRef);
-            //   }) as LegacyRef<SVGPathElement>
-            // }
-            // d={d}
-            // stroke={strokeColor}
-            // strokeLinejoin="round"
-            // strokeWidth={this.props.strokeWidth}
-            // fill="transparent"
-            // vectorEffect="non-scaling-stroke"
+
           ></path>
         )
       }}

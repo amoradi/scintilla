@@ -1,5 +1,5 @@
 import React from 'react';
-import { Range } from '../../types';
+import { Range } from '../../shared/types';
 
 type Props = { children?: JSX.Element[] | JSX.Element; height: number, yRange: Range};
 
