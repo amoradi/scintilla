@@ -1,4 +1,4 @@
-import { Range } from './types';
+import { Point, Range, ViewBox } from './types';
 
 export function isNumber(v: any): boolean  {
   return typeof v === 'number' && !isNaN(v) && isFinite(v)
@@ -15,7 +15,45 @@ export function sanitizeYData(yData: any[], yRange: Range): number[] {
   return yData.filter(isNumber).filter(isInRange);
 }
 
-export function getYPixel(height: number, { y, min, max }: { y: number, min: number, max: number }): number {
-  const yRel = (y - min) / (max - min);
-  return height * yRel;
+export function project(space: number, { n, min, max }: { n: number, min: number, max: number }): number {
+  const nRel = (n - min) / ((max - min) === 0 ? 1 : max - min);
+  return space * nRel;
+}
+
+export function makePoints(yPixels: number[]): Point[] {
+  return yPixels.map((y, i) => [i, y]);
+};
+
+export function extrema(points: Point[]) {
+  const x = points.map(([x]) => x);
+  const y = points.map(([x, y]) => y);
+
+  return {
+    x: { min: Math.min(...x), max: Math.max(...x) },
+    y: { min: Math.min(...y), max: Math.max(...y) },
+  }
+};
+
+// ASSUMPTION: viewBox origin is 0,0
+export function makeD(points: Point[], viewBox: ViewBox, yRange?: { min: number, max: number}): string {
+  const extrema_ = extrema(points);
+  const projected: Point[] = points.map(([x, y]) => {
+    return [
+      project(viewBox.width, { n: x, min: extrema_.x.min, max: extrema_.x.max }),
+      project(viewBox.height, { n: y, min: yRange ? yRange.min : extrema_.y.min, max: yRange ? yRange.max : extrema_.y.max })
+    ];
+
+  });
+
+  let d = '';
+
+  projected.forEach(([x, y], i) => {
+    if (i === 0) {
+      d += `M ${x},${viewBox.height - y}`;
+    } else {
+      d += ` L ${x},${viewBox.height - y}`;
+    }
+  });
+
+  return d;
 }
