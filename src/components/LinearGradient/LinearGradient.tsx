@@ -1,33 +1,85 @@
-import React from 'react';
-import { RGBA } from '../../shared/types';
-import { isNumber } from '../../shared/utils';
+import React from "react";
+import { Color, RGBA } from "../../shared/types";
+import { isNumber } from "../../shared/utils";
 
-const LinearGradient = ({ id, color }: { id: string, color: RGBA | RGBA[] }) => {
-  let colorStops = null;
+const LinearGradient = ({ id, color }: { id: string; color: Color }) => {
+  let gradientStops = null;
 
+  // ---- gradient
   // many colors
-  if (Array.isArray(color) && color.every((c: any) => Array.isArray(c))) {
-    colorStops = (
-        <>
-          {(color as RGBA[]).map((c: RGBA, i: number) => {
-            const colorCount = color.length;
-            const step = 100 / colorCount;
-            const start = step / 2;
+  if (
+    color &&
+    Array.isArray(color.gradient) &&
+    color.gradient.every((c: any) => Array.isArray(c))
+  ) {
+    gradientStops = (
+      <>
+        {(color.gradient as RGBA[]).map((c: RGBA, i: number) => {
+          const colorCount = (color.gradient || []).length;
+          const step = 100 / colorCount;
+          const start = step / 2;
 
-            return <stop offset={`${start + (i * step)}%`}  stopColor={`rgba(${c.join(',')})`} />
-          })}
-        </>
+          return (
+            <stop
+              offset={`${start + i * step}%`}
+              stopColor={`rgba(${c.join(",")})`}
+            />
+          );
+        })}
+      </>
     );
-  } else if (Array.isArray(color) && color.every((c: any) => isNumber(c))) {
+  } else if (
+    color &&
+    Array.isArray(color.gradient) &&
+    color.gradient.every((c: any) => isNumber(c))
+  ) {
     // 1 color
-    colorStops = <stop offset="50%"  stopColor={`rgba(${color.join(',')})`} />
+    gradientStops = (
+      <stop offset="100%" stopColor={`rgba(${color.gradient.join(",")})`} />
+    );
+  }
+
+  // ---- solid
+  // many colors
+  let solidStops = null;
+
+  if (
+    color &&
+    Array.isArray(color.solid) &&
+    color.solid.every((c: any) => Array.isArray(c))
+  ) {
+    solidStops = (
+      <>
+        {(color.solid as RGBA[]).map((c: RGBA, i: number) => {
+          const colorCount = (color.solid || []).length;
+          const step = 100 / colorCount;
+
+          return (
+            <>
+              <stop offset={`${step}%`} stopColor={`rgba(${c.join(",")})`} />
+              <stop offset={`${step}%`} stopColor={`rgba(${c.join(",")})`} />
+            </>
+          );
+        })}
+      </>
+    );
+  } else if (
+    color &&
+    Array.isArray(color.solid) &&
+    color.solid.every((c: any) => isNumber(c))
+  ) {
+    // 1 color
+    solidStops = (
+      <stop offset="100%" stopColor={`rgba(${color.solid.join(",")})`} />
+    );
   }
 
   return (
     <linearGradient id={id} gradientUnits="userSpaceOnUse">
-      {colorStops}
+      {gradientStops}
+      {solidStops}
     </linearGradient>
-  )
+  );
 };
 
 export { LinearGradient };
