@@ -2,6 +2,14 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Bar, Frame, Line } from "./components";
+// import Scintilla from 'scintilla';
+
+{
+  /* <Scintilla.Frame>
+  <Scintilla.Line />
+  <Scintilla.Line />
+</Scintilla.Frame> */
+}
 
 function App() {
   return (
@@ -42,6 +50,11 @@ function App() {
                 width: 2,
                 style: "solid"
               }}
+
+              // fill={{
+              //   gradient: {},
+              //   solid: {}
+              // }}
             />
             <Line
               data={[45, 45, 45]}
