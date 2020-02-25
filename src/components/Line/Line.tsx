@@ -50,7 +50,7 @@ const Line = ({ data, fill, stroke }: Props) => {
                 <path
                   d={"M -10,-10 " + d}
                   id={uuid}
-                  stroke={"#000"}
+                  stroke={`url(#${uuid})`}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={(stroke && stroke.width) || 0}
