@@ -1,21 +1,19 @@
 import React from "react";
 import { Data, Fill, Stroke } from "../../shared/types";
 import { FrameContext } from "../Frame";
-import { LinearGradient } from "../LinearGradient";
+import { GradientMask } from "../GradientMask";
 import { makeD, makePoints, project, sanitizeYData } from "../../shared/utils";
 import { v1 as uuidv1 } from "uuid";
-import { ColorSolid } from "../ColorSolid";
+import { ColorMask } from "../ColorMask";
 
 // (2) path Fill
 // - create the closed shape, the polygon
-// - apply linearGradient to <path> as fill url
+// - apply GradientMask to <path> as fill url
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop
 
 // (3) path Stroke
-// - width: 'strokeWidth'
-// - style: dash = 'stroke-dasharray="3 1"'
-// - color: apply linearGradient to <path> as stroke url
-// - add the following from older code
+// - do solid color masks
+// - do data curve: https://github.com/borisyankov/react-sparklines/blob/master/src/SparklinesCurve.js
 
 // (4) ? animated from this to next data
 
@@ -42,39 +40,51 @@ const Line = ({ data, fill, stroke }: Props) => {
 
         return (
           <>
-            <defs>
-              {stroke && stroke.color && stroke.color.gradient && (
-                <LinearGradient id={uuid} color={stroke.color} />
-              )}
-            </defs>
+            {/* --- Gradient Color --- */}
+            {stroke && stroke.color && stroke.color.gradient && (
+              <>
+                <defs>
+                  <GradientMask id={uuid} gradient={stroke.color.gradient} />
+                </defs>
 
+                <path
+                  d={"M -10,-10 " + d}
+                  id={uuid}
+                  stroke={"#000"}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={(stroke && stroke.width) || 0}
+                  strokeDasharray={
+                    (stroke &&
+                      stroke.style &&
+                      stroke.style === "dash" &&
+                      "6 4") ||
+                    "none"
+                  }
+                  fill="none"
+                  vectorEffect="non-scaling-stroke"
+                  shapeRendering="crispEdges"
+                />
+              </>
+            )}
+
+            {/* --- Solid Color --- */}
             {/* 
-            
-              if color.solid is multi color
-              then use
-              path X 3 for each color
-              clip each mask
-            
-            { stroke && stroke.color && stroke.color.solid &&
-              <ColorSolid subjectId={uuid} viewBox={viewBox} />
-            } */}
+                         
+                if color.solid is 1 color
+                - create a path with a stoke color value
+                - no ColorMasks
 
-            {/* TODO: implement curve. see: https://github.com/borisyankov/react-sparklines/blob/master/src/SparklinesCurve.js */}
-            <path
-              d={"M -10,-10 " + d}
-              id={uuid}
-              stroke={"#000"}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={(stroke && stroke.width) || 0}
-              strokeDasharray={
-                (stroke && stroke.style && stroke.style === "dash" && "6 4") ||
-                "none"
-              }
-              fill="none"
-              vectorEffect="non-scaling-stroke"
-              shapeRendering="crispEdges"
-            />
+                if color.solid is multi color
+                - create 3 clipPaths
+                - and 3 paths
+
+                { stroke && stroke.color && stroke.color.solid &&
+                  <ColorSolid subjectId={uuid} viewBox={viewBox} />
+                }
+            */}
+
+            {stroke && stroke.color && stroke.color.solid && null}
           </>
         );
       }}

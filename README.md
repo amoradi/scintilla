@@ -23,7 +23,7 @@ Improves `react-sparklines`
   - `stroke.color.solid`
   - `fill.gradient/solid`
 
-- start & finish `Bar`
+- start & finish `Bar` could skip this as a v2 feature.
 
   - just like `Line`
 

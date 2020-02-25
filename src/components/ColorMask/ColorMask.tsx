@@ -1,7 +1,7 @@
 import React from "react";
 import { ViewBox } from "../../shared/types";
 
-const ColorSolid = ({
+const ColorMask = ({
   subjectId,
   viewBox
 }: {
@@ -10,12 +10,12 @@ const ColorSolid = ({
 }) => {
   return (
     <>
-       {" "}
       <clipPath id={`color-solid-${subjectId}`}>
-            <rect width={20} height={viewBox.height} fill="red" /> {" "}
+            <rect width={20} height={viewBox.height} fill="red" />
+         {" "}
       </clipPath>
     </>
   );
 };
 
-export { ColorSolid };
+export { ColorMask };
