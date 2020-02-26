@@ -1,18 +1,20 @@
 import React from "react";
-import { ViewBox } from "../../shared/types";
 
 const ColorMask = ({
-  subjectId,
-  viewBox
+  id,
+  height,
+  width,
+  x
 }: {
-  subjectId: string;
-  viewBox: ViewBox;
+  id: string;
+  height: number;
+  width: number;
+  x: number;
 }) => {
   return (
     <>
-      <clipPath id={`color-solid-${subjectId}`}>
-            <rect width={20} height={viewBox.height} fill="red" />
-         {" "}
+      <clipPath id={id}>
+        <rect x={x} width={width} height={height} fill="red" />
       </clipPath>
     </>
   );

@@ -1,10 +1,11 @@
 import React from "react";
-import { Data, Fill, Stroke } from "../../shared/types";
+import { Data, Fill, RGBA, Stroke } from "../../shared/types";
 import { FrameContext } from "../Frame";
 import { GradientMask } from "../GradientMask";
 import { makeD, makePoints, project, sanitizeYData } from "../../shared/utils";
 import { v1 as uuidv1 } from "uuid";
 import { ColorMask } from "../ColorMask";
+import { isRGBA } from "../../shared/utils";
 
 // (2) path Fill
 // - create the closed shape, the polygon
@@ -12,12 +13,61 @@ import { ColorMask } from "../ColorMask";
 // https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop
 
 // (3) path Stroke
-// - do solid color masks
 // - do data curve: https://github.com/borisyankov/react-sparklines/blob/master/src/SparklinesCurve.js
 
 // (4) ? animated from this to next data
 
 type Props = { data: Data; fill?: Fill; stroke?: Stroke };
+
+const MultiSolidColor = ({
+  color,
+  d,
+  maskHeight,
+  maskWidth,
+  style,
+  width
+}: {
+  color: RGBA[];
+  d: string;
+  maskHeight: number;
+  maskWidth: number;
+  style: "dash" | "solid";
+  width: number;
+}) => {
+  const uuids = color.map(c => uuidv1());
+  const xStep = maskWidth / (color.length - 1);
+  return (
+    <>
+      {color.map((c, i) => {
+        return (
+          <>
+            <defs>
+              <ColorMask
+                x={i * xStep}
+                id={uuids[i]}
+                height={maskHeight}
+                width={xStep}
+              />
+            </defs>
+
+            <path
+              clipPath={`url(#${uuids[i]})`}
+              d={d}
+              stroke={`rgba(${c.join(", ")})`}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={width}
+              strokeDasharray={(style === "dash" && "6 4") || "none"}
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+              shapeRendering="crispEdges"
+            />
+          </>
+        );
+      })}
+    </>
+  );
+};
 
 const Line = ({ data, fill, stroke }: Props) => {
   return (
@@ -48,7 +98,7 @@ const Line = ({ data, fill, stroke }: Props) => {
                 </defs>
 
                 <path
-                  d={"M -10,-10 " + d}
+                  d={d}
                   id={uuid}
                   stroke={`url(#${uuid})`}
                   strokeLinecap="round"
@@ -69,22 +119,45 @@ const Line = ({ data, fill, stroke }: Props) => {
             )}
 
             {/* --- Solid Color --- */}
-            {/* 
-                         
-                if color.solid is 1 color
-                - create a path with a stoke color value
-                - no ColorMasks
 
-                if color.solid is multi color
-                - create 3 clipPaths
-                - and 3 paths
-
-                { stroke && stroke.color && stroke.color.solid &&
-                  <ColorSolid subjectId={uuid} viewBox={viewBox} />
+            {/* 1 color */}
+            {stroke && stroke.color && isRGBA(stroke.color.solid) && (
+              <path
+                d={d}
+                stroke={`rgba(${stroke &&
+                  stroke.color &&
+                  stroke.color.solid &&
+                  stroke.color.solid.join(", ")})`}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={(stroke && stroke.width) || 0}
+                strokeDasharray={
+                  (stroke &&
+                    stroke.style &&
+                    stroke.style === "dash" &&
+                    "6 4") ||
+                  "none"
                 }
-            */}
+                fill="none"
+                vectorEffect="non-scaling-stroke"
+                shapeRendering="crispEdges"
+              />
+            )}
 
-            {stroke && stroke.color && stroke.color.solid && null}
+            {/* multi color */}
+            {stroke &&
+              stroke.color &&
+              Array.isArray(stroke.color.solid) &&
+              stroke.color.solid.every((c: any) => isRGBA(c)) && (
+                <MultiSolidColor
+                  color={stroke.color.solid as RGBA[]}
+                  d={d}
+                  maskHeight={viewBox.height}
+                  maskWidth={viewBox.width}
+                  style={stroke.style}
+                  width={stroke.width}
+                />
+              )}
           </>
         );
       }}
