@@ -124,6 +124,20 @@ const Line = ({ data, fill, stroke }: Props) => {
             )}
 
             {/* --- Solid --- */}
+            {/* 1 color */}
+            {fill && fill.solid && isRGBA(fill.solid) && (
+              <path
+                d={polygonalD}
+                fill={`rgba(${fill.solid.join(", ")})`}
+                stroke="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={0}
+                strokeDasharray="none"
+                vectorEffect="non-scaling-stroke"
+                shapeRendering="crispEdges"
+              />
+            )}
 
             {/* ========== Stroke ========== */}
 
