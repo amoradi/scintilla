@@ -7,15 +7,15 @@ import { v1 as uuidv1 } from "uuid";
 import { ColorMask } from "../ColorMask";
 import { isRGBA } from "../../shared/utils";
 
-// (2) path Fill
+// fill
 // - create the closed shape, the polygon
-// - apply GradientMask to <path> as fill url
-// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop
+// - apply GradientMask for gradient fills
+// - apply clipPath for solid fills
 
-// (3) path Stroke
-// - do data curve: https://github.com/borisyankov/react-sparklines/blob/master/src/SparklinesCurve.js
+// data curve for fill & stroke
+// https://github.com/borisyankov/react-sparklines/blob/master/src/SparklinesCurve.js
 
-// (4) ? animated from this to next data
+// animate data
 
 type Props = { data: Data; fill?: Fill; stroke?: Stroke };
 
@@ -86,11 +86,48 @@ const Line = ({ data, fill, stroke }: Props) => {
           viewBox,
           yRange ? { min: yRange[0], max: yRange[1] } : undefined
         );
+        const polygonalD = makeD(
+          points,
+          viewBox,
+          yRange ? { min: yRange[0], max: yRange[1] } : undefined,
+          true
+        );
         const uuid = uuidv1();
+        let uuidFillGradient;
 
         return (
           <>
-            {/* --- Gradient Color --- */}
+            {/* ========== Fill ========== */}
+
+            {/* --- Gradient --- */}
+            {fill && fill.gradient && (uuidFillGradient = uuidv1()) && (
+              <>
+                <defs>
+                  <GradientMask
+                    id={uuidFillGradient}
+                    gradient={fill.gradient}
+                  />
+                </defs>
+
+                <path
+                  d={polygonalD}
+                  fill={`url(#${uuidFillGradient})`}
+                  stroke="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={0}
+                  strokeDasharray="none"
+                  vectorEffect="non-scaling-stroke"
+                  shapeRendering="crispEdges"
+                />
+              </>
+            )}
+
+            {/* --- Solid --- */}
+
+            {/* ========== Stroke ========== */}
+
+            {/* --- Gradient --- */}
             {stroke && stroke.color && stroke.color.gradient && (
               <>
                 <defs>
@@ -99,7 +136,6 @@ const Line = ({ data, fill, stroke }: Props) => {
 
                 <path
                   d={d}
-                  id={uuid}
                   stroke={`url(#${uuid})`}
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -118,7 +154,7 @@ const Line = ({ data, fill, stroke }: Props) => {
               </>
             )}
 
-            {/* --- Solid Color --- */}
+            {/* --- Solid --- */}
 
             {/* 1 color */}
             {stroke && stroke.color && isRGBA(stroke.color.solid) && (

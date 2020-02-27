@@ -50,11 +50,14 @@ function App() {
                 width: 0,
                 style: "solid"
               }}
-
-              // fill={{
-              //   gradient: {},
-              //   solid: {}
-              // }}
+              fill={{
+                gradient: [
+                  [255, 0, 0, 1],
+                  [33, 150, 243, 1],
+                  [0, 0, 0, 1]
+                ],
+                solid: []
+              }}
             />
             <Line
               data={[50, 50, 50]}

@@ -47,7 +47,8 @@ export function extrema(points: Point[]) {
 export function makeD(
   points: Point[],
   viewBox: ViewBox,
-  yRange?: { min: number; max: number }
+  yRange?: { min: number; max: number },
+  polygonal?: boolean
 ): string {
   const extrema_ = extrema(points);
   const projected: Point[] = points.map(([x, y]) => {
@@ -74,6 +75,15 @@ export function makeD(
       d += ` L ${x},${viewBox.height - y}`;
     }
   });
+
+  if (polygonal) {
+    // take last point
+    // from last point go to ===> L lp.x, 0
+    d += ` L ${projected[projected.length - 1][0]},${viewBox.height}`;
+    // then, go to origin ==> 0,0
+    d += ` L ${0},${viewBox.height} Z`;
+    // then, go to ===> fp.x, fp.y (Z)
+  }
 
   return d;
 }

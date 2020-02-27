@@ -1,7 +1,7 @@
 export type RGBA = [number, number, number, number];
 export type Range = [number, number] | null;
 export type Data = number[];
-export type Fill = RGBA | RGBA[];
+export type Fill = Color;
 export type Color = {
   gradient?: RGBA | RGBA[];
   solid?: RGBA | RGBA[];
