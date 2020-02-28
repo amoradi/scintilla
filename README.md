@@ -20,8 +20,11 @@ Improves `react-sparklines`
 
 - finish `Line`
 
-  - `stroke.color.solid`
-  - `fill.gradient/solid`
+  - `stroke.color.solid` DONE
+  - `fill.gradient/solid` DONE
+  - curve path
+  - add unit tests & viz regression tests
+    - https://medium.com/empathyco/the-front-end-testing-of-data-visualizations-29a5644b9e0e
 
 - start & finish `Bar` could skip this as a v2 feature.
 

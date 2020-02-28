@@ -7,11 +7,7 @@ import { v1 as uuidv1 } from "uuid";
 import { ColorMask } from "../ColorMask";
 import { isRGBA } from "../../shared/utils";
 
-// fill
-// - create the closed shape, the polygon
-// - apply GradientMask for gradient fills
-// - apply clipPath for solid fills
-
+// todo:
 // data curve for fill & stroke
 // https://github.com/borisyankov/react-sparklines/blob/master/src/SparklinesCurve.js
 
@@ -19,23 +15,28 @@ import { isRGBA } from "../../shared/utils";
 
 type Props = { data: Data; fill?: Fill; stroke?: Stroke };
 
-const MultiSolidColor = ({
+function MultiSolidColor({
   color,
   d,
   maskHeight,
-  maskWidth,
-  style,
-  width
+  viewBoxWidth,
+  strokeStyle,
+  width,
+  mode
 }: {
   color: RGBA[];
   d: string;
   maskHeight: number;
-  maskWidth: number;
-  style: "dash" | "solid";
+  viewBoxWidth: number;
+  strokeStyle: "dash" | "solid";
   width: number;
-}) => {
+  mode: "stroke" | "fill";
+}) {
   const uuids = color.map(c => uuidv1());
-  const xStep = maskWidth / (color.length - 1);
+  const xStep =
+    mode === "stroke"
+      ? viewBoxWidth / (color.length - 1)
+      : viewBoxWidth / color.length;
   return (
     <>
       {color.map((c, i) => {
@@ -53,21 +54,24 @@ const MultiSolidColor = ({
             <path
               clipPath={`url(#${uuids[i]})`}
               d={d}
-              stroke={`rgba(${c.join(", ")})`}
+              stroke={mode === "stroke" ? `rgba(${c.join(", ")})` : "none"}
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={width}
-              strokeDasharray={(style === "dash" && "6 4") || "none"}
-              fill="none"
+              strokeDasharray={
+                (strokeStyle === "dash" &&
+                  `${(width || 1) * 6} ${(width || 1) * 4}`) ||
+                "none"
+              }
+              fill={mode === "fill" ? `rgba(${c.join(", ")})` : "none"}
               vectorEffect="non-scaling-stroke"
-              shapeRendering="crispEdges"
             />
           </>
         );
       })}
     </>
   );
-};
+}
 
 const Line = ({ data, fill, stroke }: Props) => {
   return (
@@ -118,7 +122,6 @@ const Line = ({ data, fill, stroke }: Props) => {
                   strokeWidth={0}
                   strokeDasharray="none"
                   vectorEffect="non-scaling-stroke"
-                  shapeRendering="crispEdges"
                 />
               </>
             )}
@@ -135,9 +138,24 @@ const Line = ({ data, fill, stroke }: Props) => {
                 strokeWidth={0}
                 strokeDasharray="none"
                 vectorEffect="non-scaling-stroke"
-                shapeRendering="crispEdges"
               />
             )}
+
+            {/* multi color */}
+            {fill &&
+              fill.solid &&
+              Array.isArray(fill.solid) &&
+              fill.solid.every((c: any) => isRGBA(c)) && (
+                <MultiSolidColor
+                  color={fill.solid as RGBA[]}
+                  d={polygonalD}
+                  maskHeight={viewBox.height}
+                  viewBoxWidth={viewBox.width}
+                  strokeStyle="solid"
+                  width={0}
+                  mode="fill"
+                />
+              )}
 
             {/* ========== Stroke ========== */}
 
@@ -158,7 +176,9 @@ const Line = ({ data, fill, stroke }: Props) => {
                     (stroke &&
                       stroke.style &&
                       stroke.style === "dash" &&
-                      "6 4") ||
+                      `${((stroke && stroke.width) || 1) * 6} ${((stroke &&
+                        stroke.width) ||
+                        1) * 4}`) ||
                     "none"
                   }
                   fill="none"
@@ -185,7 +205,9 @@ const Line = ({ data, fill, stroke }: Props) => {
                   (stroke &&
                     stroke.style &&
                     stroke.style === "dash" &&
-                    "6 4") ||
+                    `${((stroke && stroke.width) || 1) * 6} ${((stroke &&
+                      stroke.width) ||
+                      1) * 4}`) ||
                   "none"
                 }
                 fill="none"
@@ -203,9 +225,10 @@ const Line = ({ data, fill, stroke }: Props) => {
                   color={stroke.color.solid as RGBA[]}
                   d={d}
                   maskHeight={viewBox.height}
-                  maskWidth={viewBox.width}
-                  style={stroke.style}
+                  viewBoxWidth={viewBox.width}
+                  strokeStyle={stroke.style}
                   width={stroke.width}
+                  mode={"stroke"}
                 />
               )}
           </>
