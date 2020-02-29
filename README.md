@@ -6,15 +6,15 @@ Improves `react-sparklines`
 
 - grants ability to plot multiple datasets within the same spark frame
 - filter data based on `range`
+- lacking: drawing curve algo. todo 0.1.0
 - lacking: add `clip` to frame.
-- lacking: drawing curve algo
 
 **style**
 
 - intra-data colorization
   - solid and gradient masks can applied to data. from any set of data.
   - stroke and fill
-- lacking: spot/dots
+- lacking: markers. todo 0.1.0
 
 ### TODO
 
@@ -22,32 +22,30 @@ Improves `react-sparklines`
 
   - `stroke.color.solid` DONE
   - `fill.gradient/solid` DONE
-  - curve path
-  - add unit tests & viz regression tests
-    - https://medium.com/empathyco/the-front-end-testing-of-data-visualizations-29a5644b9e0e
+  - write behavorial tests. "This svg should LOOK LIKE this test svg."
 
-- start & finish `Bar` could skip this as a v2 feature.
+- push to public github
 
-  - just like `Line`
-
-- write behavorial tests. "This svg should LOOK LIKE this test svg."
-
-- make public github endpoint
-
-  - README & Demo link like: https://github.com/borisyankov/react-sparklines
+- README & Demo link like: https://github.com/borisyankov/react-sparklines
 
 - make "pack-able"
+
   - https://docs.npmjs.com/cli-commands/pack.html
   - https://classic.yarnpkg.com/en/docs/cli/link/
   - test package in fresh app repo
-  - export types??
   - write README for npm & github? yarn???
   - github badges
     - tests passings
     - code coverage
     - version
     - stable
-  - write build script?????
+  - write build script????? NO
+  - export types?? NO
+
+- 0.1.0
+  - `Bar` type. 0.1.0 feature
+  - markers
+  - curve path
 
 ### `yarn start`
 

@@ -1,9 +1,9 @@
-import { Bar } from './Bar';
-import { Frame } from './Frame';
-import { Line } from './Line';
+// import { Bar } from './Bar';
+import { Frame } from "./Frame";
+import { Line } from "./Line";
 
 export {
-  Bar,
+  // Bar,
   Frame,
   Line
 };

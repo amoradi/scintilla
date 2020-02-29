@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { Bar, Frame, Line } from "./components";
+import { Frame, Line } from "./components";
 // import Scintilla from 'scintilla';
 
 {
@@ -16,6 +16,23 @@ function App() {
     <div className="App">
       <main>
         <div style={{ padding: "20px" }}>
+          <Frame height={100} yRange={[0, 100]}>
+            <Line
+              data={[0, 1, 2, 3, 16]}
+              stroke={{
+                color: {
+                  solid: [
+                    [255, 0, 0, 1],
+                    [245, 237, 135, 1],
+                    [145, 37, 235, 1],
+                    [255, 0, 0, 1]
+                  ]
+                },
+                width: 12,
+                style: "dash"
+              }}
+            />
+          </Frame>
           <Frame height={100} yRange={[0, 100]}>
             <Line
               data={[

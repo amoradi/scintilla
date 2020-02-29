@@ -2,21 +2,6 @@
   "name": "scintilla",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "@types/uuid": "^3.4.7",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.4.0",
-    "typescript": "~3.7.2",
-    "uuid": "^3.4.0"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -39,10 +24,28 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/jest-image-snapshot": "^2.11.1",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/uuid": "^3.4.7",
     "husky": "^4.2.3",
+    "jest-image-snapshot": "^2.12.0",
     "lint-staged": "^10.0.7",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-scripts": "3.4.0",
+    "react-visual-regression": "^1.1.2",
+    "typescript": "~3.7.2",
+    "uuid": "^3.4.0"
   },
+  "peerDependencies": {
+    "react": "*"
+  },
+  "dependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
