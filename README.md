@@ -1,51 +1,45 @@
 ### Desc
 
-Improves `react-sparklines`
+### TODO
+
+- outline README with api, usage, quick start, etc.
+- create demo page like: https://github.com/borisyankov/react-sparklines
+  - code-visuals listing
+- publish to npm
+
+  - write README for npm (reuse githubs)
+  - github badges
+    - tests passings
+    - code coverage
+    - version
+    - stable
+  - export types
+  - tiny size plz
+  - test package in fresh app repo
+    - https://docs.npmjs.com/cli-commands/pack.html
+    - https://classic.yarnpkg.com/en/docs/cli/link/
+
+- 0.2.0
+  - `Bar` component
+  - markers option
+  - curve path component
+  - long short component
+
+`react-sparklines` comparison
 
 **data**
 
 - grants ability to plot multiple datasets within the same spark frame
 - filter data based on `range`
 - lacking: drawing curve algo. todo 0.1.0
-- lacking: add `clip` to frame.
+- lacking: add `clip` to frame. won't do, don't pass in that data
 
 **style**
 
 - intra-data colorization
-  - solid and gradient masks can applied to data. from any set of data.
-  - stroke and fill
+- solid and gradient masks can applied to data. from any set of data.
+- stroke and fill
 - lacking: markers. todo 0.1.0
-
-### TODO
-
-- finish `Line`
-
-  - `stroke.color.solid` DONE
-  - `fill.gradient/solid` DONE
-  - write behavorial tests. "This svg should LOOK LIKE this test svg." DONE
-
-- push to public github DONE
-
-- README & Demo link like: https://github.com/borisyankov/react-sparklines
-
-- make "pack-able"
-
-  - https://docs.npmjs.com/cli-commands/pack.html
-  - https://classic.yarnpkg.com/en/docs/cli/link/
-  - test package in fresh app repo
-  - write README for npm & github? yarn???
-  - github badges
-    - tests passings
-    - code coverage
-    - version
-    - stable
-  - write build script????? NO
-  - export types?? NO
-
-- 0.1.0
-  - `Bar` type. 0.1.0 feature
-  - markers
-  - curve path
 
 ### `yarn start`
 
