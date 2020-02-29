@@ -22,9 +22,9 @@ Improves `react-sparklines`
 
   - `stroke.color.solid` DONE
   - `fill.gradient/solid` DONE
-  - write behavorial tests. "This svg should LOOK LIKE this test svg."
+  - write behavorial tests. "This svg should LOOK LIKE this test svg." DONE
 
-- push to public github
+- push to public github DONE
 
 - README & Demo link like: https://github.com/borisyankov/react-sparklines
 
