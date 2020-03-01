@@ -1,4 +1,4 @@
-### Desc
+# Scintilla — React Sparklines Component
 
 ### TODO
 
