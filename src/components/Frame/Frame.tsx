@@ -1,9 +1,14 @@
-import React from 'react';
-import { Range, ViewBox } from '../../shared/types';
+import React from "react";
+import { Range, ViewBox } from "../../shared/types";
 
-type Props = { children?: JSX.Element[] | JSX.Element; height: number, viewBox: ViewBox, yRange: Range };
+type Props = {
+  children?: JSX.Element[] | JSX.Element;
+  height: number;
+  viewBox: ViewBox;
+  yRange: Range;
+};
 
-const defaults: Omit<Props, 'children'> = {
+const defaults: Omit<Props, "children"> = {
   height: 50,
   viewBox: {
     width: 100,
@@ -12,18 +17,20 @@ const defaults: Omit<Props, 'children'> = {
   yRange: null
 };
 
-const FrameContext = React.createContext({...defaults});
+const FrameContext = React.createContext({ ...defaults });
 
+// height?: number, defaults to 50
+// yRAnge?: [min:number, max:number]
 const Frame = ({ children, height, yRange }: Props) => {
   const viewBox = defaults.viewBox;
 
-  return ( 
+  return (
     <svg
       width="100%"
       height={height}
       viewBox={`0 0 ${viewBox.width} ${viewBox.width}`}
       preserveAspectRatio="none"
-      style={{ display: 'block' }}
+      style={{ display: "block" }}
     >
       <FrameContext.Provider value={{ height, viewBox, yRange }}>
         {children}
