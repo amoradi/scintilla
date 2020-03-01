@@ -1,62 +1,139 @@
-# Scintilla — React Sparklines Component
+## ⚛️ Scintilla
 
-### TODO
+**A React Sparklines Component**
 
-- outline README with api, usage, quick start, etc.
-- create demo page like: https://github.com/borisyankov/react-sparklines
-  - code-visuals listing
-- publish to npm
+{ badges here }
+{ pictures here }
 
-  - write README for npm (reuse githubs)
-  - github badges
-    - tests passings
-    - code coverage
-    - version
-    - stable
-  - export types
-  - tiny size plz
-  - test package in fresh app repo
-    - https://docs.npmjs.com/cli-commands/pack.html
-    - https://classic.yarnpkg.com/en/docs/cli/link/
+---
 
-- 0.2.0
-  - `Bar` component
-  - markers option
-  - curve path component
-  - long short component
+### Demo
 
-`react-sparklines` comparison
+https://github.com/tannerlinsley/react-charts/blob/master/README.md
 
-**data**
+### Install
 
-- grants ability to plot multiple datasets within the same spark frame
-- filter data based on `range`
-- lacking: drawing curve algo. todo 0.1.0
-- lacking: add `clip` to frame. won't do, don't pass in that data
+```bash
+$ yarn add scintilla
+$ npm install scintilla --save
+```
 
-**style**
+### Quick Start
 
-- intra-data colorization
-- solid and gradient masks can applied to data. from any set of data.
-- stroke and fill
-- lacking: markers. todo 0.1.0
+```tsx
+import React from "react";
+import { Frame, Line } from "scintilla";
 
-### `yarn start`
+const RedLine = () => (
+  <Frame>
+    <Line
+      data={[40, 50, 60, 70]}
+      stroke={{
+        color: { solid: [255, 0, 0, 1] },
+        width: 2,
+        style: "solid"
+      }}
+    />
+  </Frame>
+);
+```
 
-### `yarn test`
+### Features
 
-### `yarn build`
+- composeable
+- `SVG`-based
+- flexible intra-data color options
+- responsive width
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### API
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**Types**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```ts
+type Color = {
+  gradient?: RGBA | RGBA[];
+  solid?: RGBA | RGBA[];
+};
+```
 
-## Learn More
+```ts
+type RGBA = [0-255, 0-255, 0-255, 0-1]
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```ts
+type Stroke = {
+  width: number;
+  style: "dash" | "solid";
+  color: Color;
+};
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Components**
+
+#### `<Frame />`
+
+Responsive container for all `data`-needy child components.
+
+**`height?: number`**
+Optionally specify height in pixels. Defaults to `50px`.
+
+**`range?: [min<number>, max<number>]`**
+Optionally plot `children` components with this y axis constraint.
+
+**Example**
+
+```tsx
+<Frame height={100} range={[0, 500]}>
+  <Line />
+</Frame>
+```
+
+---
+
+#### `<Line />`
+
+Plot your series data as a line. Style line with `stroke`, `fill` or both.
+
+**`data: number[]`**
+The list of `y` data to plot.
+
+**`stroke?: Stroke`**
+Set `width` in pixels, `style` as `'dash'` or `'solid'` and color option.
+
+**`fill?: Color`**
+Solid or gradient fill, with one or many colors. Fills area from data line to bottom axis.
+
+**Example**
+
+```tsx
+<Frame>
+  <Line
+    data={[-1, 2, 6, 9, 11, 21]}
+    stroke={{
+      width: 1,
+      style: "dash",
+      color: {
+        solid: [
+          [255, 0, 0, 0.25],
+          [255, 0, 0, 0.5],
+          [255, 0, 0, 0.1]
+        ]
+      }
+    }}
+    fill={{
+      gradient: [
+        [255, 0, 0, 0.1],
+        [255, 0, 0, 1]
+      ]
+    }}
+  />
+</Frame>
+```
+
+### Examples
+
+See demo: https://github.com/gitname/react-gh-pages
+
+### License
+
+MIT
