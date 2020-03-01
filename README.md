@@ -1,4 +1,4 @@
-## ⚛️ Scintilla
+# ⚛️ Scintilla
 
 **A React Sparklines Component**
 
@@ -7,20 +7,20 @@
 
 ---
 
-### Demo
+## Demo
 
 https://github.com/tannerlinsley/react-charts/blob/master/README.md
 
-### Install
+## Install
 
 ```bash
 $ yarn add scintilla
 $ npm install scintilla --save
 ```
 
-### Quick Start
+## Quick Start
 
-```tsx
+```jsx
 import React from "react";
 import { Frame, Line } from "scintilla";
 
@@ -38,14 +38,14 @@ const RedLine = () => (
 );
 ```
 
-### Features
+## Features
 
 - composeable
 - `SVG`-based
 - flexible intra-data color options
 - responsive width
 
-### API
+## API
 
 **Types**
 
@@ -70,19 +70,19 @@ type Stroke = {
 
 **Components**
 
-#### `<Frame />`
+### `<Frame />`
 
 Responsive container for all `data`-needy child components.
 
-**`height?: number`**
-Optionally specify height in pixels. Defaults to `50px`.
+- **`height?: number`**
+  Optionally specify height in pixels. Defaults to `50px`.
 
-**`range?: [min<number>, max<number>]`**
-Optionally plot `children` components with this y axis constraint.
+- **`range?: [min<number>, max<number>]`**
+  Optionally plot `children` components with this y axis constraint.
 
 **Example**
 
-```tsx
+```jsx
 <Frame height={100} range={[0, 500]}>
   <Line />
 </Frame>
@@ -90,22 +90,22 @@ Optionally plot `children` components with this y axis constraint.
 
 ---
 
-#### `<Line />`
+### `<Line />`
 
 Plot your series data as a line. Style line with `stroke`, `fill` or both.
 
-**`data: number[]`**
-The list of `y` data to plot.
+- **`data: number[]`**
+  The list of `y` data to plot.
 
-**`stroke?: Stroke`**
-Set `width` in pixels, `style` as `'dash'` or `'solid'` and color option.
+- **`stroke?: Stroke`**
+  Set `width` in pixels, `style` as `'dash'` or `'solid'` and color option.
 
-**`fill?: Color`**
-Solid or gradient fill, with one or many colors. Fills area from data line to bottom axis.
+- **`fill?: Color`**
+  Solid or gradient fill, with one or many colors. Fills area from data line to bottom axis.
 
 **Example**
 
-```tsx
+```jsx
 <Frame>
   <Line
     data={[-1, 2, 6, 9, 11, 21]}
@@ -130,10 +130,10 @@ Solid or gradient fill, with one or many colors. Fills area from data line to bo
 </Frame>
 ```
 
-### Examples
+## Examples
 
 See demo: https://github.com/gitname/react-gh-pages
 
-### License
+## License
 
 MIT
