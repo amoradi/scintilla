@@ -1,4 +1,4 @@
-### Desc
+# Scintillating React Sparklines Component
 
 ### TODO
 
