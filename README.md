@@ -2,8 +2,7 @@
 
 **A React Sparklines Component**
 
-{ badges here }
-{ pictures here }
+[![Build Status](https://travis-ci.org/amoradi/scintilla.svg?branch=master)](https://travis-ci.org/amoradi/scintilla)
 
 ---
 

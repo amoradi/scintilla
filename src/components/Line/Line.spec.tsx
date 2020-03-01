@@ -11,6 +11,14 @@ const opts = {
   bodyPadding: 10
 };
 
+const failOpts: {
+  failureThreshold: number;
+  failureThresholdType: "percent" | "pixel" | undefined;
+} = {
+  failureThreshold: 0.01,
+  failureThresholdType: "percent"
+};
+
 describe("Line", () => {
   describe("stroke", () => {
     describe("solid", () => {
@@ -29,7 +37,7 @@ describe("Line", () => {
           opts
         );
 
-        expect(image).toMatchImageSnapshot();
+        expect(image).toMatchImageSnapshot(failOpts);
       });
       test("solid color multi", async () => {
         const image = await render(
@@ -55,7 +63,7 @@ describe("Line", () => {
           opts
         );
 
-        expect(image).toMatchImageSnapshot();
+        expect(image).toMatchImageSnapshot(failOpts);
       });
       test("gradient color", async () => {
         const image = await render(
@@ -72,7 +80,7 @@ describe("Line", () => {
           opts
         );
 
-        expect(image).toMatchImageSnapshot();
+        expect(image).toMatchImageSnapshot(failOpts);
       });
       test("gradient color multi", async () => {
         const image = await render(
@@ -98,7 +106,7 @@ describe("Line", () => {
           opts
         );
 
-        expect(image).toMatchImageSnapshot();
+        expect(image).toMatchImageSnapshot(failOpts);
       });
     });
 
@@ -118,7 +126,7 @@ describe("Line", () => {
           opts
         );
 
-        expect(image).toMatchImageSnapshot();
+        expect(image).toMatchImageSnapshot(failOpts);
       });
       test("solid color multi", async () => {
         const image = await render(
@@ -142,7 +150,7 @@ describe("Line", () => {
           opts
         );
 
-        expect(image).toMatchImageSnapshot();
+        expect(image).toMatchImageSnapshot(failOpts);
       });
       test("gradient color", async () => {
         const image = await render(
@@ -159,7 +167,7 @@ describe("Line", () => {
           opts
         );
 
-        expect(image).toMatchImageSnapshot();
+        expect(image).toMatchImageSnapshot(failOpts);
       });
       test("gradient color multi", async () => {
         const image = await render(
@@ -183,7 +191,7 @@ describe("Line", () => {
           opts
         );
 
-        expect(image).toMatchImageSnapshot();
+        expect(image).toMatchImageSnapshot(failOpts);
       });
     });
   });
@@ -200,7 +208,7 @@ describe("Line", () => {
         opts
       );
 
-      expect(image).toMatchImageSnapshot();
+      expect(image).toMatchImageSnapshot(failOpts);
     });
     test("solid color multi", async () => {
       const image = await render(
@@ -222,7 +230,7 @@ describe("Line", () => {
         opts
       );
 
-      expect(image).toMatchImageSnapshot();
+      expect(image).toMatchImageSnapshot(failOpts);
     });
     test("gradient color", async () => {
       const image = await render(
@@ -235,7 +243,7 @@ describe("Line", () => {
         opts
       );
 
-      expect(image).toMatchImageSnapshot();
+      expect(image).toMatchImageSnapshot(failOpts);
     });
     test("gradient color multi", async () => {
       const image = await render(
@@ -257,7 +265,7 @@ describe("Line", () => {
         opts
       );
 
-      expect(image).toMatchImageSnapshot();
+      expect(image).toMatchImageSnapshot(failOpts);
     });
   });
 });
