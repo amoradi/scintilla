@@ -1,4 +1,4 @@
-# Scintillating React Sparklines Component
+# React Sparklines Component: `<Scintilla />`
 
 ### TODO
 
