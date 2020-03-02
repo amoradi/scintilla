@@ -14,6 +14,10 @@
 
   - host @ https://github.com/gitname/react-gh-pages
   - possibly have a "playground for tampering". \*\* NO
+  - add "docs" page
+    - this content reads from README.md OR both read from same source.
+    - so as I update in 1 place, they simulataneously updates
+    - or write api in www and LINK to it from README
   - visuals + code listing
     - cycle through all permutations
     - need syntax highlighter \*\* DONE

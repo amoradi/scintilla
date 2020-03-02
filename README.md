@@ -39,7 +39,7 @@ const RedLine = () => (
 
 ## Features
 
-- composeable
+- composeable: mix and match as many `Line`'s within a single `Frame`
 - `SVG`-based
 - flexible intra-data color options
 - responsive width
