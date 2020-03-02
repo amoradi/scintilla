@@ -30,7 +30,7 @@ const Frame = ({ children, height, yRange }: Props) => {
       height={height}
       viewBox={`0 0 ${viewBox.width} ${viewBox.width}`}
       preserveAspectRatio="none"
-      style={{ display: "block" }}
+      style={{ display: "inline" }}
     >
       <FrameContext.Provider value={{ height, viewBox, yRange }}>
         {children}

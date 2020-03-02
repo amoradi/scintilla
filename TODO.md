@@ -13,7 +13,9 @@
 - create demo page like: https://github.com/borisyankov/react-sparklines
 
   - host @ https://github.com/gitname/react-gh-pages
+  - possibly have a "playground for tampering".
   - visuals + code listing. cycle through all permutations
+    - need syntax highlighter
   - for now, locally, link to package \*\* DONE
   - put one chart on page \*\* DONE
 
