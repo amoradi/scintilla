@@ -1,11 +1,5 @@
 # TODO
 
-- outline README with api, usage, quick start, etc. \*\* DONE
-- remove `create-react-app`code from project & maintain passing tests \*\* DONE
-- create travis build step: \*\* DONE
-- travis build fails, but locally passes...sob \*\* DONE
-- github badges \*\* DONE
-
 - yarn publish: publish to npm
 
   - https://hackernoon.com/how-to-publish-your-package-on-npm-7fc1f5aae600
@@ -17,11 +11,12 @@
     - https://classic.yarnpkg.com/en/docs/cli/link/
 
 - create demo page like: https://github.com/borisyankov/react-sparklines
-  - https://github.com/gitname/react-gh-pages
-  - code-visuals listing
-  - need a tangible sparkline package to install first
-  - of now, locallym, link to package
-  - put one chart on page
+
+  - host @ https://github.com/gitname/react-gh-pages
+  - visuals + code listing. cycle through all permutations
+  - for now, locally, link to package \*\* DONE
+  - put one chart on page \*\* DONE
+
 - clean up code
 
 - 0.2.0
