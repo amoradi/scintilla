@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./build/",
     "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedParameters": true,
@@ -8,11 +9,11 @@
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noImplicitAny": true,
-    "target": "es2015",
-    "module": "es2015",
     "strict": true,
-    "jsx": "react"
+    "target": "es6",
+    "jsx": "react",
+    "module": "esnext"
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "build"]
+  "exclude": ["node_modules"]
 }

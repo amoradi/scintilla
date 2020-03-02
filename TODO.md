@@ -21,7 +21,7 @@
   - code-visuals listing
   - need a tangible sparkline package to install first
   - of now, locallym, link to package
-  - 1. next app 2) link to chart 3) put one chart on page
+  - put one chart on page
 - clean up code
 
 - 0.2.0

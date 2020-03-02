@@ -2,7 +2,8 @@
   "name": "scintilla",
   "description": "React sparklines component.",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "build/bundle.js",
   "scripts": {
     "test": "jest --forceExit",
     "type-check": "tsc --noEmit",

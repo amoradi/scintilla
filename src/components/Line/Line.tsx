@@ -32,7 +32,7 @@ function MultiSolidColor({
   width: number;
   mode: "stroke" | "fill";
 }) {
-  const uuids = color.map(c => uuidv1());
+  const uuids = color.map(() => uuidv1());
   const xStep =
     mode === "stroke"
       ? viewBoxWidth / color.length
