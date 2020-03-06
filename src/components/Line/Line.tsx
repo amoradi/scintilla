@@ -55,8 +55,8 @@ function MultiSolidColor({
               clipPath={`url(#${uuids[i]})`}
               d={d}
               stroke={mode === "stroke" ? `rgba(${c.join(", ")})` : "none"}
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              // strokeLinecap="round"
+              // strokeLinejoin="round"
               strokeWidth={width}
               strokeDasharray={
                 (strokeStyle === "dash" &&
@@ -88,12 +88,22 @@ const Line = ({ data, fill, stroke }: Props) => {
         const d = makeD(
           points,
           viewBox,
-          yRange ? { min: yRange[0], max: yRange[1] } : undefined
+          yRange
+            ? {
+                min: project(height, { n: min, min, max }),
+                max: project(height, { n: max, min, max })
+              }
+            : undefined
         );
         const polygonalD = makeD(
           points,
           viewBox,
-          yRange ? { min: yRange[0], max: yRange[1] } : undefined,
+          yRange
+            ? {
+                min: project(height, { n: min, min, max }),
+                max: project(height, { n: max, min, max })
+              }
+            : undefined,
           true
         );
         const uuid = uuidv1();
@@ -117,8 +127,8 @@ const Line = ({ data, fill, stroke }: Props) => {
                   d={polygonalD}
                   fill={`url(#${uuidFillGradient})`}
                   stroke="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  // strokeLinecap="round"
+                  // strokeLinejoin="round"
                   strokeWidth={0}
                   strokeDasharray="none"
                   vectorEffect="non-scaling-stroke"
@@ -133,8 +143,8 @@ const Line = ({ data, fill, stroke }: Props) => {
                 d={polygonalD}
                 fill={`rgba(${fill.solid.join(", ")})`}
                 stroke="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                // strokeLinecap="round"
+                // strokeLinejoin="round"
                 strokeWidth={0}
                 strokeDasharray="none"
                 vectorEffect="non-scaling-stroke"
@@ -169,8 +179,8 @@ const Line = ({ data, fill, stroke }: Props) => {
                 <path
                   d={d}
                   stroke={`url(#${uuid})`}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                  // strokeLinecap="round"
+                  // strokeLinejoin="round"
                   strokeWidth={(stroke && stroke.width) || 0}
                   strokeDasharray={
                     (stroke &&
@@ -183,7 +193,7 @@ const Line = ({ data, fill, stroke }: Props) => {
                   }
                   fill="none"
                   vectorEffect="non-scaling-stroke"
-                  shapeRendering="crispEdges"
+                  // shapeRendering="crispEdges"
                 />
               </>
             )}
@@ -198,8 +208,8 @@ const Line = ({ data, fill, stroke }: Props) => {
                   stroke.color &&
                   stroke.color.solid &&
                   stroke.color.solid.join(", ")})`}
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                // strokeLinecap="round"
+                // strokeLinejoin="round"
                 strokeWidth={(stroke && stroke.width) || 0}
                 strokeDasharray={
                   (stroke &&
@@ -212,7 +222,7 @@ const Line = ({ data, fill, stroke }: Props) => {
                 }
                 fill="none"
                 vectorEffect="non-scaling-stroke"
-                shapeRendering="crispEdges"
+                // shapeRendering="crispEdges"
               />
             )}
 

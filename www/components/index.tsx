@@ -1,3 +1,3 @@
-import { DefaultLine } from "./Line";
+import { DefaultLine, Master } from "./Line";
 
-export { DefaultLine };
+export { DefaultLine, Master };

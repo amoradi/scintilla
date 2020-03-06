@@ -25,6 +25,7 @@
   - put one chart on page \*\* DONE
 
 - clean up code
+- add subject matter labels to gitlab. e.g. sparkliness, react, charts, data-visualization
 
 - 0.2.0
   - markers option
