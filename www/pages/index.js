@@ -23,13 +23,18 @@ const Home = () => (
     </Head>
 
     <main>
+      {/* <div>
       <h1 className="title">Scintilla</h1>
 
       <p className="description">A React sparklines component.</p>
-
+      </div> */}
       {/* <RedLine /> */}
 
       <div className="grid">
+        <div className="card">
+          <h1 className="title">Scintilla</h1>
+          <p className="description">A React sparklines component.</p>
+        </div>
         {/* <Master /> */}
         {Master().map(([Example, codeString]) => {
           return (
@@ -90,7 +95,7 @@ const Home = () => (
       }
 
       main {
-        padding: 5rem 0;
+        padding: 0 0 5rem;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -136,7 +141,7 @@ const Home = () => (
       .title {
         margin: 0;
         line-height: 1.15;
-        font-size: 4rem;
+        font-size: 3rem;
       }
 
       .title,
@@ -146,7 +151,7 @@ const Home = () => (
 
       .description {
         line-height: 1.5;
-        font-size: 1.5rem;
+        font-size: 0.9rem;
       }
 
       code {
@@ -188,6 +193,7 @@ const Home = () => (
     <style jsx global>{`
       html,
       body {
+        background-color: #fffaf0;
         padding: 0;
         margin: 0;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
