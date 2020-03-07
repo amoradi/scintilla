@@ -1,7 +1,9 @@
 import Head from "next/head";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { prism } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { DefaultLine, Master } from "../components";
 
-const Home = () => (
+const Docs = () => (
   <div className="container">
     <Head>
       <title>scintilla</title>
@@ -14,18 +16,99 @@ const Home = () => (
           <h1 className="title">Scintilla</h1>
           <p className="description">A React sparklines component</p>
 
-          <a href="/documentation" className="description">
+          <a href="https://nextjs.org/docs" className="description">
             <h3>documentation</h3>
           </a>
         </div>
-        {/* <Master /> */}
-        {Master().map(([Example, codeString]) => {
-          return (
-            <div className="card">
-              <DefaultLine codeString={codeString} Example={Example} />
-            </div>
-          );
-        })}
+      </div>
+      <div>
+        <SyntaxHighlighter language="markdown" style={prism}>
+          {`## API`}
+          {/* ## API
+
+**Types**
+
+```ts
+type Color = {
+  gradient?: RGBA | RGBA[];
+  solid?: RGBA | RGBA[];
+};
+```
+
+```ts
+type RGBA = [0-255, 0-255, 0-255, 0-1]
+```
+
+```ts
+type Stroke = {
+  width: number;
+  style: "dash" | "solid";
+  color: Color;
+};
+```
+
+**Components**
+
+### `<Frame />`
+
+Responsive container for all `data`-needy child components.
+
+- **`height?: number`**
+  Optionally specify height in pixels. Defaults to `50px`.
+
+- **`range?: [min<number>, max<number>]`**
+  Optionally plot `children` components with this y axis constraint.
+
+**Example**
+
+```jsx
+<Frame height={100} range={[0, 500]}>
+  <Line />
+</Frame>
+```
+
+---
+
+### `<Line />`
+
+Plot your series data as a line. Style line with `stroke`, `fill` or both.
+
+- **`data: number[]`**
+  The list of `y` data to plot.
+
+- **`stroke?: Stroke`**
+  Set `width` in pixels, `style` as `'dash'` or `'solid'` and color option.
+
+- **`fill?: Color`**
+  Solid or gradient fill, with one or many colors. Fills area from data line to bottom axis.
+
+**Example**
+
+```jsx
+<Frame>
+  <Line
+    data={[-1, 2, 6, 9, 11, 21]}
+    stroke={{
+      width: 1,
+      style: "dash",
+      color: {
+        solid: [
+          [255, 0, 0, 0.25],
+          [255, 0, 0, 0.5],
+          [255, 0, 0, 0.1]
+        ]
+      }
+    }}
+    fill={{
+      gradient: [
+        [255, 0, 0, 0.1],
+        [255, 0, 0, 1]
+      ]
+    }}
+  />
+</Frame>
+`} */}
+        </SyntaxHighlighter>
       </div>
     </main>
 
@@ -37,7 +120,7 @@ const Home = () => (
       >
         Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
       </a> */}
-      <a href="/documentation">
+      <a href="https://nextjs.org/docs">
         <h3>documentation</h3>
       </a>
     </footer>
@@ -186,4 +269,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default Docs;
