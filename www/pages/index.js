@@ -1,19 +1,5 @@
 import Head from "next/head";
-import { Frame, Line } from "scintilla";
 import { DefaultLine, Master } from "../components";
-
-const RedLine = () => (
-  <Frame>
-    <Line
-      data={[40, 32, 50, 48, 60, 70]}
-      stroke={{
-        color: { solid: [255, 0, 0, 1] },
-        width: 2,
-        style: "solid"
-      }}
-    />
-  </Frame>
-);
 
 const Home = () => (
   <div className="container">
@@ -23,17 +9,14 @@ const Home = () => (
     </Head>
 
     <main>
-      {/* <div>
-      <h1 className="title">Scintilla</h1>
-
-      <p className="description">A React sparklines component.</p>
-      </div> */}
-      {/* <RedLine /> */}
-
       <div className="grid">
-        <div className="card">
+        <div className="card primo">
           <h1 className="title">Scintilla</h1>
-          <p className="description">A React sparklines component.</p>
+          <p className="description">A React sparklines component</p>
+
+          <a href="https://nextjs.org/docs" className="description">
+            <h3>documentation</h3>
+          </a>
         </div>
         {/* <Master /> */}
         {Master().map(([Example, codeString]) => {
@@ -43,44 +26,19 @@ const Home = () => (
             </div>
           );
         })}
-
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Learn &rarr;</h3>
-          <p>Learn about Next.js in an interactive course with quizzes!</p>
-        </a>
-
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
-        >
-          <h3>Examples &rarr;</h3>
-          <p>Discover and deploy boilerplate example Next.js projects.</p>
-        </a>
-
-        <a
-          href="https://zeit.co/new?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          className="card"
-        >
-          <h3>Deploy &rarr;</h3>
-          <p>
-            Instantly deploy your Next.js site to a public URL with ZEIT Now.
-          </p>
-        </a>
       </div>
     </main>
 
     <footer>
-      <a
+      {/* <a
         href="https://zeit.co?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         target="_blank"
         rel="noopener noreferrer"
       >
         Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
+      </a> */}
+      <a href="https://nextjs.org/docs">
+        <h3>documentation</h3>
       </a>
     </footer>
 
@@ -104,9 +62,10 @@ const Home = () => (
       }
 
       footer {
+        padding-bottom: 100px;
         width: 100%;
         height: 100px;
-        border-top: 1px solid #eaeaea;
+        //border-top: 1px solid #eaeaea;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -139,9 +98,11 @@ const Home = () => (
       }
 
       .title {
-        margin: 0;
+        margin: 100px 0 0;
         line-height: 1.15;
         font-size: 3rem;
+        // text-transform: uppercase;
+        // height: 150px;
       }
 
       .title,
@@ -180,6 +141,24 @@ const Home = () => (
         margin: 1rem;
         flex-basis: 25%;
         padding: 1.5rem;
+        align-self: flex-start;
+      }
+
+      .card pre {
+        height: 240px;
+        overflow-y: scroll;
+      }
+
+      .card.primo {
+        align-self: center;
+        color: #444;
+        text-transform: lowercase;
+      }
+
+      h3 {
+        font-weight: normal;
+        margin-top: 60px;
+        text-decoration: underline;
       }
 
       @media (max-width: 600px) {
