@@ -19,8 +19,6 @@ const defaults: Omit<Props, "children"> = {
 
 const FrameContext = React.createContext({ ...defaults });
 
-// height?: number, defaults to 50
-// yRAnge?: [min:number, max:number]
 const Frame = ({ children, height, yRange }: Props) => {
   const viewBox = defaults.viewBox;
 

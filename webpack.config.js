@@ -10,6 +10,14 @@ module.exports = {
     libraryTarget: "umd",
     path: path.resolve(__dirname, "build")
   },
+  // externals: {
+  //   react: {
+  //     root: "React",
+  //     commonjs2: "react",
+  //     commonjs: "react",
+  //     amd: "react"
+  //   }
+  // },
 
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"]

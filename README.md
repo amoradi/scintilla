@@ -76,13 +76,13 @@ Responsive container for all `data`-needy child components.
 - **`height?: number`**
   Optionally specify height in pixels. Defaults to `50px`.
 
-- **`range?: [min<number>, max<number>]`**
+- **`yRange?: [min<number>, max<number>]`**
   Optionally plot `children` components with this y axis constraint.
 
 **Example**
 
 ```jsx
-<Frame height={100} range={[0, 500]}>
+<Frame height={100} yRange={[0, 500]}>
   <Line />
 </Frame>
 ```

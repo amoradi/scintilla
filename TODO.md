@@ -10,23 +10,19 @@
     - https://docs.npmjs.com/cli-commands/pack.html
     - https://classic.yarnpkg.com/en/docs/cli/link/
 
+- switch over to rollup: https://medium.com/webpack/webpack-and-rollup-the-same-but-different-a41ad427058c
+
+  - can't export ESM in webpack
+  - need to b/c i want tree shaking: https://github.com/webpack/webpack/issues/2933
+
 - create demo page like: https://github.com/borisyankov/react-sparklines
 
   - host @ https://github.com/gitname/react-gh-pages
-  - possibly have a "playground for tampering". \*\* NO
-  - add "docs" page
-    - blank page made \*\* DONE
-    - this content reads from README.md OR both read from same source.
-    - so as I update in 1 place, they simulataneously updates
-    - or write api in www and LINK to it from README
-  - visuals + code listing \*\* DONE
-    - cycle through all permutations \*\* DONE
-    - need syntax highlighter \*\* DONE
-  - for now, locally, link to package \*\* DONE
-  - put one chart on page \*\* DONE
+  - link to examples and docs from README.md
 
 - clean up code
 - add subject matter labels to gitlab. e.g. sparkliness, react, charts, data-visualization
+- add code coverage badge
 
 - 0.2.0
   - markers option
