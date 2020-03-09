@@ -3,6 +3,7 @@
   "description": "React sparklines component.",
   "version": "0.1.0",
   "private": false,
+  "homepage": "http://amoradi.github.io/scintilla",
   "main": "build/bundle.js",
   "scripts": {
     "test": "jest --forceExit",

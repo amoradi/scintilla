@@ -14,6 +14,7 @@ https://github.com/tannerlinsley/react-charts/blob/master/README.md
 
 ```bash
 $ yarn add scintilla
+$ or
 $ npm install scintilla --save
 ```
 

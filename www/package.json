@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "yarn build && next export && yarn move",
+    "move": "cp -r out/. ../docs"
   },
   "dependencies": {
     "next": "9.2.2",
