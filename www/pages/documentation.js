@@ -17,7 +17,7 @@ const Docs = () => {
             <p className="description">A React sparklines component</p>
 
             <h3 className="description">
-              <a href="/">home</a>
+              <a href="https://amoradi.github.io/scintilla/">home</a>
             </h3>
           </div>
 
@@ -160,11 +160,11 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
       </main>
 
       <footer>
-        <a href="/">
+        <a href="https://amoradi.github.io/scintilla/">
           <h3>home</h3>
         </a>
 
-        <a href="/documentation">
+        <a href="https://amoradi.github.io/scintilla/documentation">
           <h3>documentation</h3>
         </a>
       </footer>

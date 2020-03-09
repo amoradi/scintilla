@@ -14,7 +14,9 @@ const Home = () => (
           <h1 className="title">Scintilla</h1>
           <p className="description">A React sparklines component</p>
           <h3 className="description">
-            <a href="/documentation">documentation</a>
+            <a href="https://amoradi.github.io/scintilla/documentation">
+              documentation
+            </a>
           </h3>
         </div>
         {/* <Master /> */}
@@ -29,11 +31,11 @@ const Home = () => (
     </main>
 
     <footer>
-      <a href="/">
+      <a href="https://amoradi.github.io/scintilla/">
         <h3>home</h3>
       </a>
 
-      <a href="/documentation">
+      <a href="https://amoradi.github.io/scintilla/documentation">
         <h3>documentation</h3>
       </a>
     </footer>
