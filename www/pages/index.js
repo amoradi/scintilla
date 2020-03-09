@@ -13,10 +13,9 @@ const Home = () => (
         <div className="card primo">
           <h1 className="title">Scintilla</h1>
           <p className="description">A React sparklines component</p>
-
-          <a href="/documentation" className="description">
-            <h3>documentation</h3>
-          </a>
+          <h3 className="description">
+            <a href="/documentation">documentation</a>
+          </h3>
         </div>
         {/* <Master /> */}
         {Master().map(([Example, codeString]) => {
@@ -30,13 +29,10 @@ const Home = () => (
     </main>
 
     <footer>
-      {/* <a
-        href="https://zeit.co?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
-      </a> */}
+      <a href="/">
+        <h3>home</h3>
+      </a>
+
       <a href="/documentation">
         <h3>documentation</h3>
       </a>
@@ -76,6 +72,7 @@ const Home = () => (
       }
 
       footer a {
+        padding: 5px 10px;
         display: flex;
         justify-content: center;
         align-items: center;

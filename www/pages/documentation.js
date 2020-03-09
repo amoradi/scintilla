@@ -1,53 +1,99 @@
 import Head from "next/head";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { DefaultLine, Master } from "../components";
 
-const Docs = () => (
-  <div className="container">
-    <Head>
-      <title>scintilla</title>
-      {/*<link rel="icon" href="/favicon.ico" />*/}
-    </Head>
+const Docs = () => {
+  return (
+    <div className="container">
+      <Head>
+        <title>scintilla</title>
+        {/*<link rel="icon" href="/favicon.ico" />*/}
+      </Head>
 
-    <main>
-      <div className="grid">
-        <div className="card primo">
-          <h1 className="title">Scintilla</h1>
-          <p className="description">A React sparklines component</p>
+      <main>
+        <div className="grid">
+          <div className="card primo">
+            <h1 className="title">Scintilla</h1>
+            <p className="description">A React sparklines component</p>
 
-          <a href="https://nextjs.org/docs" className="description">
-            <h3>documentation</h3>
-          </a>
-        </div>
-      </div>
-      <div>
-        <SyntaxHighlighter language="markdown" style={prism}>
-          {`## API`}
-          {/* ## API
+            <h3 className="description">
+              <a href="/">home</a>
+            </h3>
+          </div>
 
-**Types**
+          <div className="col2">
+            <h2>types</h2>
+            <SyntaxHighlighter language="tsx" style={prism}>
+              {`type RGBA = [0-255, 0-255, 0-255, 0-1]
 
-```ts
 type Color = {
   gradient?: RGBA | RGBA[];
   solid?: RGBA | RGBA[];
 };
-```
 
-```ts
-type RGBA = [0-255, 0-255, 0-255, 0-1]
-```
-
-```ts
 type Stroke = {
   width: number;
   style: "dash" | "solid";
   color: Color;
-};
-```
+};`}
+            </SyntaxHighlighter>
+            <h2>frame</h2>
+            <p>Responsive container for all data-needy child components.</p>
+            <SyntaxHighlighter language="tsx" style={prism}>
+              {`// specify height in pixels. defaults to 50px.
+height?: number
 
-**Components**
+// plot children components with this y axis constraint.
+yRange?: [min<number>, max<number>]
+
+// example
+<Frame height={100} yRange={[0, 500]}>
+  <Line />
+</Frame>
+`}
+            </SyntaxHighlighter>
+            <h2>line</h2>
+            <p>
+              Plot your series data as a line. Style line with stroke, fill or
+              both.
+            </p>
+            <SyntaxHighlighter language="tsx" style={prism}>
+              {`// the list of y data to plot.
+data: number[]
+
+// set width in pixels, style as 'dash' or 'solid' and color option
+stroke?: Stroke
+
+// solid or gradient fill, with one or many colors. fills area from data line to bottom axis.
+fill?: Color
+
+// example
+<Frame>
+  <Line
+    data={[-1, 2, 6, 9, 11, 21]}
+    stroke={{
+      width: 1,
+      style: "dash",
+      color: {
+        solid: [
+          [255, 0, 0, 0.25],
+          [255, 0, 0, 0.5],
+          [255, 0, 0, 0.1]
+        ]
+      }
+    }}
+    fill={{
+      gradient: [
+        [255, 0, 0, 0.1],
+        [255, 0, 0, 1]
+      ]
+    }}
+  />
+</Frame>
+`}
+            </SyntaxHighlighter>
+
+            {/* // Components
 
 ### `<Frame />`
 
@@ -107,166 +153,185 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
     }}
   />
 </Frame>
-`} */}
-        </SyntaxHighlighter>
-      </div>
-    </main>
+`} 
+  </SyntaxHighlighter>*/}
+          </div>
+        </div>
+      </main>
 
-    <footer>
-      {/* <a
-        href="https://zeit.co?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
-      </a> */}
-      <a href="https://nextjs.org/docs">
-        <h3>documentation</h3>
-      </a>
-    </footer>
+      <footer>
+        <a href="/">
+          <h3>home</h3>
+        </a>
 
-    <style jsx>{`
-      .container {
-        min-height: 100vh;
-        padding: 0 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+        <a href="/documentation">
+          <h3>documentation</h3>
+        </a>
+      </footer>
 
-      main {
-        padding: 0 0 5rem;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer {
-        padding-bottom: 100px;
-        width: 100%;
-        height: 100px;
-        //border-top: 1px solid #eaeaea;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer img {
-        margin-left: 0.5rem;
-      }
-
-      footer a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .title a {
-        color: #0070f3;
-        text-decoration: none;
-      }
-
-      .title a:hover,
-      .title a:focus,
-      .title a:active {
-        text-decoration: underline;
-      }
-
-      .title {
-        margin: 100px 0 0;
-        line-height: 1.15;
-        font-size: 3rem;
-        // text-transform: uppercase;
-        // height: 150px;
-      }
-
-      .title,
-      .description {
-        text-align: center;
-      }
-
-      .description {
-        line-height: 1.5;
-        font-size: 0.9rem;
-      }
-
-      code {
-        background: #fafafa;
-        border-radius: 5px;
-        padding: 0.75rem;
-        font-size: 1.1rem;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-
-      .grid {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        max-width: 100vw;
-        margin-top: 3rem;
-      }
-
-      .grid > *,
-      .card {
-        min-width: 320px;
-        max-width: 380px;
-        margin: 1rem;
-        flex-basis: 25%;
-        padding: 1.5rem;
-        align-self: flex-start;
-      }
-
-      .card pre {
-        height: 240px;
-        overflow-y: scroll;
-      }
-
-      .card.primo {
-        align-self: center;
-        color: #444;
-        text-transform: lowercase;
-      }
-
-      h3 {
-        font-weight: normal;
-        margin-top: 60px;
-        text-decoration: underline;
-      }
-
-      @media (max-width: 600px) {
-        .grid {
-          width: 100%;
+      <style jsx>{`
+        .container {
+          min-height: 100vh;
+          padding: 0 0.5rem;
+          display: flex;
           flex-direction: column;
+          justify-content: center;
+          align-items: center;
         }
-      }
-    `}</style>
 
-    <style jsx global>{`
-      html,
-      body {
-        background-color: #fffaf0;
-        padding: 0;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      }
+        main {
+          padding: 0 0 5rem;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
 
-      * {
-        box-sizing: border-box;
-      }
-    `}</style>
-  </div>
-);
+        footer {
+          padding-bottom: 100px;
+          width: 100%;
+          height: 100px;
+          //border-top: 1px solid #eaeaea;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        footer img {
+          margin-left: 0.5rem;
+        }
+
+        footer a {
+          padding: 5px 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .title a {
+          color: #0070f3;
+          text-decoration: none;
+        }
+
+        .title a:hover,
+        .title a:focus,
+        .title a:active {
+          text-decoration: underline;
+        }
+
+        .title {
+          margin: 100px 0 0;
+          line-height: 1.15;
+          font-size: 3rem;
+          // text-transform: uppercase;
+          // height: 150px;
+        }
+
+        .title,
+        .description {
+          text-align: center;
+        }
+
+        .description {
+          line-height: 1.5;
+          font-size: 0.9rem;
+        }
+
+        code {
+          background: #fafafa;
+          border-radius: 5px;
+          padding: 0.75rem;
+          font-size: 1.1rem;
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        }
+
+        .grid {
+          // display: flex;
+          // align-items: center;
+          // justify-content: center;
+          // flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: 380px 1140px;
+          max-width: 100vw;
+          margin-top: 3rem;
+        }
+
+        .col2 {
+          margin-top: 75px;
+        }
+
+        //.grid > *,
+        .card {
+          // min-width: 320px;
+          // max-width: 380px;
+          margin: 1rem;
+          // flex-basis: 25%;
+          padding: 1.5rem;
+          //align-self: flex-start;
+          box-sizing: border-box;
+        }
+
+        .card pre {
+          height: 240px;
+          overflow-y: scroll;
+        }
+
+        .card.primo {
+          //align-self: center;
+          color: #444;
+          text-transform: lowercase;
+          position: relative;
+          margin-right: 7rem;
+          margin-top: 2.5rem;
+        }
+
+        h3 {
+          font-weight: normal;
+          margin-top: 60px;
+          text-decoration: underline;
+        }
+
+        h2,
+        h3 {
+          color: #444;
+        }
+
+        .col2 > h2 ~ h2 {
+          margin-top: 6rem;
+        }
+
+        @media (max-width: 600px) {
+          .grid {
+            width: 100%;
+            flex-direction: column;
+          }
+        }
+      `}</style>
+
+      <style jsx global>{`
+        html,
+        body {
+          background-color: #fffaf0;
+          padding: 0;
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+            sans-serif;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+      `}</style>
+    </div>
+  );
+};
 
 export default Docs;
