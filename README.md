@@ -8,7 +8,7 @@
 
 ## Demo
 
-https://github.com/tannerlinsley/react-charts/blob/master/README.md
+See: https://amoradi.github.io/scintilla
 
 ## Install
 
@@ -46,6 +46,8 @@ const RedLine = () => (
 - responsive width
 
 ## API
+
+See: https://amoradi.github.io/scintilla/documentation
 
 **Types**
 
@@ -132,7 +134,7 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
 
 ## Examples
 
-See demo: https://github.com/gitname/react-gh-pages
+See: https://amoradi.github.io/scintilla
 
 ## License
 
