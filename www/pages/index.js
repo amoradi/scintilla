@@ -11,12 +11,20 @@ const Home = () => (
     <main>
       <div className="grid">
         <div className="card primo">
-          <h1 className="title">Scintilla</h1>
-          <p className="description">A React sparklines component</p>
+          <a href="https://amoradi.github.io/scintilla">
+            <h1 className="title">Scintilla</h1>
+            <p className="description">A React sparklines component</p>
+          </a>
+          <h3 className="description">
+            <a href="https://amoradi.github.io/scintilla">home</a>
+          </h3>
           <h3 className="description">
             <a href="https://amoradi.github.io/scintilla/documentation">
               documentation
             </a>
+          </h3>
+          <h3 className="description">
+            <a href="https://github.com/amoradi/scintilla">repository</a>
           </h3>
         </div>
         {/* <Master /> */}
@@ -31,12 +39,19 @@ const Home = () => (
     </main>
 
     <footer>
-      <a href="https://amoradi.github.io/scintilla/">
-        <h3>home</h3>
+      <a href="https://amoradi.github.io/scintilla/" className="link">
+        home
       </a>
 
-      <a href="https://amoradi.github.io/scintilla/documentation">
-        <h3>documentation</h3>
+      <a
+        href="https://amoradi.github.io/scintilla/documentation"
+        className="link"
+      >
+        documentation
+      </a>
+
+      <a href="https://github.com/amoradi/scintilla" className="link">
+        repository
       </a>
     </footer>
 
@@ -83,6 +98,10 @@ const Home = () => (
       a {
         color: inherit;
         text-decoration: none;
+      }
+
+      .link {
+        text-decoration: underline;
       }
 
       .title a {
@@ -141,6 +160,7 @@ const Home = () => (
         flex-basis: 25%;
         padding: 1.5rem;
         align-self: flex-start;
+        box-sizing: border-box;
       }
 
       .card pre {
@@ -157,13 +177,19 @@ const Home = () => (
       h3 {
         font-weight: normal;
         margin-top: 60px;
+        margin-bottom: 0;
         text-decoration: underline;
+      }
+
+      h3 ~ h3 {
+        margin-top: 0px;
       }
 
       @media (max-width: 600px) {
         .grid {
           width: 100%;
           flex-direction: column;
+          align-content: center;
         }
       }
     `}</style>

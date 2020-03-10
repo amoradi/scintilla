@@ -12,13 +12,11 @@
 
 - switch over to rollup: https://medium.com/webpack/webpack-and-rollup-the-same-but-different-a41ad427058c
 
+  - https://rollupjs.org/guide/en/
+  - https://github.com/rollup/rollup/wiki/pkg.module
+  - https://shipshape.io/blog/converting-a-webpack-build-to-rollup/
   - can't export ESM in webpack
   - need to b/c i want tree shaking: https://github.com/webpack/webpack/issues/2933
-
-- create demo page like: https://github.com/borisyankov/react-sparklines
-
-  - host @ https://github.com/gitname/react-gh-pages
-  - link to examples and docs from README.md
 
 - clean up code
 - add subject matter labels to gitlab. e.g. sparkliness, react, charts, data-visualization

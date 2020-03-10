@@ -13,11 +13,20 @@ const Docs = () => {
       <main>
         <div className="grid">
           <div className="card primo">
-            <h1 className="title">Scintilla</h1>
-            <p className="description">A React sparklines component</p>
-
+            <a href="https://amoradi.github.io/scintilla">
+              <h1 className="title">Scintilla</h1>
+              <p className="description">A React sparklines component</p>
+            </a>
             <h3 className="description">
-              <a href="https://amoradi.github.io/scintilla/">home</a>
+              <a href="https://amoradi.github.io/scintilla">home</a>
+            </h3>
+            <h3 className="description">
+              <a href="https://amoradi.github.io/scintilla/documentation">
+                documentation
+              </a>
+            </h3>
+            <h3 className="description">
+              <a href="https://github.com/amoradi/scintilla">repository</a>
             </h3>
           </div>
 
@@ -160,12 +169,19 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
       </main>
 
       <footer>
-        <a href="https://amoradi.github.io/scintilla/">
-          <h3>home</h3>
+        <a href="https://amoradi.github.io/scintilla/" className="link">
+          home
         </a>
 
-        <a href="https://amoradi.github.io/scintilla/documentation">
-          <h3>documentation</h3>
+        <a
+          href="https://amoradi.github.io/scintilla/documentation"
+          className="link"
+        >
+          documentation
+        </a>
+
+        <a href="https://github.com/amoradi/scintilla" className="link">
+          repository
         </a>
       </footer>
 
@@ -212,6 +228,10 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
         a {
           color: inherit;
           text-decoration: none;
+        }
+
+        .link {
+          text-decoration: underline;
         }
 
         .title a {
@@ -295,7 +315,12 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
         h3 {
           font-weight: normal;
           margin-top: 60px;
+          margin-bottom: 0;
           text-decoration: underline;
+        }
+
+        h3 ~ h3 {
+          margin-top: 0px;
         }
 
         h2,
@@ -309,8 +334,13 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
 
         @media (max-width: 600px) {
           .grid {
-            width: 100%;
-            flex-direction: column;
+            display: block;
+            width: calc(100% - 100px);
+            //flex-direction: column;
+          }
+
+          .card.primo {
+            margin: 1rem;
           }
         }
       `}</style>
