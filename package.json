@@ -5,12 +5,12 @@
   "private": false,
   "homepage": "http://amoradi.github.io/scintilla",
   "main": "build/bundle.js",
+  "module": "build/bundle.esm.js",
   "scripts": {
     "test": "jest --forceExit",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn run type-check -- --watch",
-    "build": "webpack --progress --colors --mode=production",
-    "start": "webpack-dev-server --config webpack.config.js --progress --colors --open --mode=development"
+    "build": "rollup --config"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +36,7 @@
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -45,8 +46,6 @@
     "@types/react": "^16.9.0",
     "@types/uuid": "^3.4.7",
     "babel-loader": "^8.0.6",
-    "fork-ts-checker-webpack-plugin": "^4.0.5",
-    "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "jest-image-snapshot": "^2.12.0",
@@ -55,16 +54,19 @@
     "react": "^16.12.0",
     "react-dom": "^16.13.0",
     "react-visual-regression": "^1.1.2",
-    "typescript": "~3.7.2",
-    "uuid": "^3.4.0",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "rollup": "^2.0.3",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-babel-minify": "^9.1.1",
+    "rollup-plugin-size-snapshot": "^0.11.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "typescript": "~3.7.2"
   },
   "peerDependencies": {
     "react": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "uuid": "^3.4.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "yarn build && next export && yarn move",
+    "publish-site": "yarn build && next export && yarn move",
     "move": "cp -r out/. ../docs"
   },
   "dependencies": {

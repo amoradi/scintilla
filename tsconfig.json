@@ -12,7 +12,8 @@
     "strict": true,
     "target": "es6",
     "jsx": "react",
-    "module": "esnext"
+    "module": "esnext",
+    "types": ["node", "react", "uuid", "jest", "jest-image-snapshot"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

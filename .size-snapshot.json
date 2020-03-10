@@ -1,0 +1,54 @@
+{
+  "build/bundle.rollup.esm.js": {
+    "bundled": 9242,
+    "minified": 4877,
+    "gzipped": 1581,
+    "treeshaked": {
+      "rollup": {
+        "code": 154,
+        "import_statements": 34
+      },
+      "webpack": {
+        "code": 1181
+      }
+    }
+  },
+  "build/bundle": {
+    "bundled": 10167,
+    "minified": 4712,
+    "gzipped": 1659
+  },
+  "build/bundle.mjs": {
+    "bundled": 9242,
+    "minified": 4877,
+    "gzipped": 1581,
+    "treeshaked": {
+      "rollup": {
+        "code": 154,
+        "import_statements": 34
+      },
+      "webpack": {
+        "code": 1181
+      }
+    }
+  },
+  "build/bundle.esm.js": {
+    "bundled": 9242,
+    "minified": 4877,
+    "gzipped": 1581,
+    "treeshaked": {
+      "rollup": {
+        "code": 154,
+        "import_statements": 34
+      },
+      "webpack": {
+        "code": 1181
+      }
+    }
+  },
+  "build/bundle.js": {
+    "bundled": 10167,
+    "minified": 4712,
+    "gzipped": 1659
+  }
+}
