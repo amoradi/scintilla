@@ -10,14 +10,7 @@
     - https://docs.npmjs.com/cli-commands/pack.html
     - https://classic.yarnpkg.com/en/docs/cli/link/
 
-- switch over to rollup: https://medium.com/webpack/webpack-and-rollup-the-same-but-different-a41ad427058c
-
-  - https://rollupjs.org/guide/en/
-  - https://github.com/rollup/rollup/wiki/pkg.module
-  - https://shipshape.io/blog/converting-a-webpack-build-to-rollup/
-  - can't export ESM in webpack
-  - need to b/c i want tree shaking: https://github.com/webpack/webpack/issues/2933
-
+- export types with .d.ts file
 - clean up code
 - add subject matter labels to gitlab. e.g. sparkliness, react, charts, data-visualization
 - add code coverage badge
