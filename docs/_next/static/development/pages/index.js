@@ -131,6 +131,7 @@
                       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                         "stop",
                         {
+                          key: c,
                           offset: `${e / 2 + c * e}%`,
                           stopColor: `rgba(${a.join(",")})`
                         }
@@ -182,7 +183,7 @@
             a.map((a, c) =>
               react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
-                null,
+                { key: c },
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                   "defs",
                   null,

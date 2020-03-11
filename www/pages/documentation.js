@@ -47,7 +47,10 @@ type Stroke = {
 };`}
             </SyntaxHighlighter>
             <h2>frame</h2>
-            <p>Responsive container for all data-needy child components.</p>
+            <p>
+              Responsive container for all data-needy child components. wrap
+              frame in your own container to constrain width.
+            </p>
             <SyntaxHighlighter language="tsx" style={prism}>
               {`// specify height in pixels. defaults to 50px.
 height?: number
@@ -56,9 +59,12 @@ height?: number
 yRange?: [min<number>, max<number>]
 
 // example
-<Frame height={100} yRange={[0, 500]}>
-  <Line />
-</Frame>
+// wrap frame in your own container to constrain width
+<div style={{ width: '100px' }}>
+  <Frame height={100} yRange={[0, 500]}>
+    <Line />
+  </Frame>
+</div>
 `}
             </SyntaxHighlighter>
             <h2>line</h2>
@@ -77,28 +83,30 @@ stroke?: Stroke
 fill?: Color
 
 // example
-<Frame>
-  <Line
-    data={[-1, 2, 6, 9, 11, 21]}
-    stroke={{
-      width: 1,
-      style: "dash",
-      color: {
-        solid: [
-          [255, 0, 0, 0.25],
-          [255, 0, 0, 0.5],
-          [255, 0, 0, 0.1]
+<div style={{ width: '100px' }}>
+  <Frame>
+    <Line
+      data={[-1, 2, 6, 9, 11, 21]}
+      stroke={{
+        width: 1,
+        style: "dash",
+        color: {
+          solid: [
+            [255, 0, 0, 0.25],
+            [255, 0, 0, 0.5],
+            [255, 0, 0, 0.1]
+          ]
+        }
+      }}
+      fill={{
+        gradient: [
+          [255, 0, 0, 0.1],
+          [255, 0, 0, 1]
         ]
-      }
-    }}
-    fill={{
-      gradient: [
-        [255, 0, 0, 0.1],
-        [255, 0, 0, 1]
-      ]
-    }}
-  />
-</Frame>
+      }}
+    />
+  </Frame>
+</div>
 `}
             </SyntaxHighlighter>
 

@@ -25,16 +25,19 @@ import React from "react";
 import { Frame, Line } from "scintilla";
 
 const RedLine = () => (
-  <Frame>
-    <Line
-      data={[40, 50, 60, 70]}
-      stroke={{
-        color: { solid: [255, 0, 0, 1] },
-        width: 2,
-        style: "solid"
-      }}
-    />
-  </Frame>
+  {/* wrap sparkline in a container to constrain width */}
+  <div style={{ width: '100px' }}>
+    <Frame>
+      <Line
+        data={[40, 50, 60, 70]}
+        stroke={{
+          color: { solid: [255, 0, 0, 1] },
+          width: 2,
+          style: "solid"
+        }}
+      />
+    </Frame>
+  <div>
 );
 ```
 
@@ -43,7 +46,7 @@ const RedLine = () => (
 - composeable: mix and match as many `Line`'s within a single `Frame`
 - `SVG`-based
 - flexible intra-data color options
-- responsive width
+- responsive width. Wrap `Frame` in your own container to constrain width.
 
 ## API
 
@@ -74,7 +77,7 @@ type Stroke = {
 
 ### `<Frame />`
 
-Responsive container for all `data`-needy child components.
+Responsive container for all `data`-needy child components. Wrap `Frame` in your own container to constrain width.
 
 - **`height?: number`**
   Optionally specify height in pixels. Defaults to `50px`.
@@ -85,9 +88,11 @@ Responsive container for all `data`-needy child components.
 **Example**
 
 ```jsx
-<Frame height={100} yRange={[0, 500]}>
-  <Line />
-</Frame>
+<div style={{ width: "100px" }}>
+  <Frame height={100} yRange={[0, 500]}>
+    <Line />
+  </Frame>
+</div>
 ```
 
 ---
@@ -108,28 +113,30 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
 **Example**
 
 ```jsx
-<Frame>
-  <Line
-    data={[-1, 2, 6, 9, 11, 21]}
-    stroke={{
-      width: 1,
-      style: "dash",
-      color: {
-        solid: [
-          [255, 0, 0, 0.25],
-          [255, 0, 0, 0.5],
-          [255, 0, 0, 0.1]
+<div style={{ width: "100px" }}>
+  <Frame>
+    <Line
+      data={[-1, 2, 6, 9, 11, 21]}
+      stroke={{
+        width: 1,
+        style: "dash",
+        color: {
+          solid: [
+            [255, 0, 0, 0.25],
+            [255, 0, 0, 0.5],
+            [255, 0, 0, 0.1]
+          ]
+        }
+      }}
+      fill={{
+        gradient: [
+          [255, 0, 0, 0.1],
+          [255, 0, 0, 1]
         ]
-      }
-    }}
-    fill={{
-      gradient: [
-        [255, 0, 0, 0.1],
-        [255, 0, 0, 1]
-      ]
-    }}
-  />
-</Frame>
+      }}
+    />
+  </Frame>
+</div>
 ```
 
 ## Examples
