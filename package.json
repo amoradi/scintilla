@@ -1,16 +1,39 @@
 {
   "name": "scintilla",
-  "description": "React sparklines component.",
+  "description": "React sparklines 📈",
   "version": "0.1.0",
   "private": false,
+  "author": "Aaron Moradi <moradi.aaron@gmail.com> (https://github.com/amoradi)",
+  "license": "MIT",
   "homepage": "http://amoradi.github.io/scintilla",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amoradi/scintilla.git"
+  },
+  "keywords": [
+    "react",
+    "sparkline",
+    "react charts",
+    "react-component",
+    "charts",
+    "line chart",
+    "dataviz",
+    "svg"
+  ],
+  "files": [
+    "build"
+  ],
+  "bugs": {
+    "url": "https://github.com/amoradi/scintilla/issues"
+  },
   "main": "build/bundle.js",
   "module": "build/bundle.esm.js",
   "scripts": {
     "test": "jest --forceExit",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn run type-check -- --watch",
-    "build": "rollup --config"
+    "build": "rollup --config",
+    "prepublish": "yarn run test && yarn run build"
   },
   "eslintConfig": {
     "extends": "react-app"

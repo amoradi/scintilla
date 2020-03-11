@@ -7,8 +7,11 @@ node_modules
 build
 dist
 
-# docs
+## docs site
+www
+docs
 TODO.md
+
 
 # testing
 coverage
