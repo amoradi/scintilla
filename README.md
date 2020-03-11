@@ -1,6 +1,6 @@
 # scintilla
 
-**react sparklines 📈**
+**react sparklines**
 
 [![Build Status](https://travis-ci.org/amoradi/scintilla.svg?branch=master)](https://travis-ci.org/amoradi/scintilla)
 
