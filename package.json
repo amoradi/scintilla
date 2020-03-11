@@ -33,7 +33,8 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn run type-check -- --watch",
     "build": "rollup --config",
-    "prepublish": "yarn run test && yarn run build"
+    "prepare": "yarn run test && yarn run build",
+    "dry-run": "npm pack --dry-run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -59,7 +60,6 @@
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "@babel/preset-typescript": "^7.8.3",
-    "@rollup/plugin-node-resolve": "^7.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",

@@ -33,9 +33,9 @@
     }
   },
   "build/bundle.esm.js": {
-    "bundled": 9242,
-    "minified": 4877,
-    "gzipped": 1581,
+    "bundled": 9256,
+    "minified": 4886,
+    "gzipped": 1595,
     "treeshaked": {
       "rollup": {
         "code": 154,
@@ -47,8 +47,8 @@
     }
   },
   "build/bundle.js": {
-    "bundled": 10167,
-    "minified": 4712,
-    "gzipped": 1659
+    "bundled": 10181,
+    "minified": 4721,
+    "gzipped": 1674
   }
 }

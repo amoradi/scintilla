@@ -41,7 +41,7 @@ function MultiSolidColor({
     <>
       {color.map((c, i) => {
         return (
-          <>
+          <React.Fragment key={i}>
             <defs>
               <ColorMask
                 x={i * xStep}
@@ -66,7 +66,7 @@ function MultiSolidColor({
               fill={mode === "fill" ? `rgba(${c.join(", ")})` : "none"}
               vectorEffect="non-scaling-stroke"
             />
-          </>
+          </React.Fragment>
         );
       })}
     </>

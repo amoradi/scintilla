@@ -27,6 +27,7 @@ const GradientMask = ({
 
           return (
             <stop
+              key={i}
               offset={`${start + i * step}%`}
               stopColor={`rgba(${c.join(",")})`}
             />
