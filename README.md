@@ -2,7 +2,7 @@
 
 **react sparklines**
 
-[![Build Status](https://travis-ci.org/amoradi/scintilla.svg?branch=master)](https://travis-ci.org/amoradi/scintilla) [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![Build Status](https://travis-ci.org/amoradi/scintilla.svg?branch=master)](https://travis-ci.org/amoradi/scintilla)
 
 ---
 
