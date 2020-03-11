@@ -13,7 +13,7 @@ const Home = () => (
         <div className="card primo">
           <a href="https://amoradi.github.io/scintilla">
             <h1 className="title">Scintilla</h1>
-            <p className="description">A React sparklines component</p>
+            <p className="description">react sparklines</p>
           </a>
           <h3 className="description">
             <a href="https://amoradi.github.io/scintilla">home</a>
