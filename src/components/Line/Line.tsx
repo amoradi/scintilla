@@ -7,6 +7,7 @@ import { v1 as uuidv1 } from "uuid";
 import { ColorMask } from "../ColorMask";
 import { isRGBA } from "../../shared/utils";
 import { Path } from "../Path";
+import { FillGradient } from "./FillGradient";
 
 type Props = { data: Data; fill?: Fill; stroke?: Stroke };
 
@@ -108,24 +109,11 @@ const Line = ({ data, fill, stroke }: Props) => {
 
             {/* --- Gradient --- */}
             {fill && fill.gradient && (uuidFillGradient = uuidv1()) && (
-              <>
-                <defs>
-                  <GradientMask
-                    id={uuidFillGradient}
-                    gradient={fill.gradient}
-                  />
-                </defs>
-
-                <Path
-                  clipPath={"none"}
-                  d={polygonalD}
-                  fill={`url(#${uuidFillGradient})`}
-                  stroke="none"
-                  strokeWidth={0}
-                  strokeDasharray="none"
-                  vectorEffect="non-scaling-stroke"
-                />
-              </>
+              <FillGradient
+                gradient={fill.gradient}
+                polygonalD={polygonalD}
+                uuid={uuidFillGradient}
+              />
             )}
 
             {/* --- Solid --- */}
