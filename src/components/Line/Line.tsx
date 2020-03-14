@@ -6,12 +6,7 @@ import { makeD, makePoints, project, sanitizeYData } from "../../shared/utils";
 import { v1 as uuidv1 } from "uuid";
 import { ColorMask } from "../ColorMask";
 import { isRGBA } from "../../shared/utils";
-
-// todo:
-// data curve for fill & stroke
-// https://github.com/borisyankov/react-sparklines/blob/master/src/SparklinesCurve.js
-
-// animate data
+import { Path } from "../Path";
 
 type Props = { data: Data; fill?: Fill; stroke?: Stroke };
 
@@ -51,12 +46,10 @@ function MultiSolidColor({
               />
             </defs>
 
-            <path
+            <Path
               clipPath={`url(#${uuids[i]})`}
               d={d}
               stroke={mode === "stroke" ? `rgba(${c.join(", ")})` : "none"}
-              // strokeLinecap="round"
-              // strokeLinejoin="round"
               strokeWidth={width}
               strokeDasharray={
                 (strokeStyle === "dash" &&
@@ -123,12 +116,11 @@ const Line = ({ data, fill, stroke }: Props) => {
                   />
                 </defs>
 
-                <path
+                <Path
+                  clipPath={"none"}
                   d={polygonalD}
                   fill={`url(#${uuidFillGradient})`}
                   stroke="none"
-                  // strokeLinecap="round"
-                  // strokeLinejoin="round"
                   strokeWidth={0}
                   strokeDasharray="none"
                   vectorEffect="non-scaling-stroke"
@@ -139,12 +131,11 @@ const Line = ({ data, fill, stroke }: Props) => {
             {/* --- Solid --- */}
             {/* 1 color */}
             {fill && fill.solid && isRGBA(fill.solid) && (
-              <path
+              <Path
+                clipPath={"none"}
                 d={polygonalD}
                 fill={`rgba(${fill.solid.join(", ")})`}
                 stroke="none"
-                // strokeLinecap="round"
-                // strokeLinejoin="round"
                 strokeWidth={0}
                 strokeDasharray="none"
                 vectorEffect="non-scaling-stroke"
@@ -176,11 +167,10 @@ const Line = ({ data, fill, stroke }: Props) => {
                   <GradientMask id={uuid} gradient={stroke.color.gradient} />
                 </defs>
 
-                <path
+                <Path
+                  clipPath={"none"}
                   d={d}
                   stroke={`url(#${uuid})`}
-                  // strokeLinecap="round"
-                  // strokeLinejoin="round"
                   strokeWidth={(stroke && stroke.width) || 0}
                   strokeDasharray={
                     (stroke &&
@@ -193,7 +183,6 @@ const Line = ({ data, fill, stroke }: Props) => {
                   }
                   fill="none"
                   vectorEffect="non-scaling-stroke"
-                  // shapeRendering="crispEdges"
                 />
               </>
             )}
@@ -202,14 +191,13 @@ const Line = ({ data, fill, stroke }: Props) => {
 
             {/* 1 color */}
             {stroke && stroke.color && isRGBA(stroke.color.solid) && (
-              <path
+              <Path
+                clipPath={"none"}
                 d={d}
                 stroke={`rgba(${stroke &&
                   stroke.color &&
                   stroke.color.solid &&
                   stroke.color.solid.join(", ")})`}
-                // strokeLinecap="round"
-                // strokeLinejoin="round"
                 strokeWidth={(stroke && stroke.width) || 0}
                 strokeDasharray={
                   (stroke &&
@@ -222,7 +210,6 @@ const Line = ({ data, fill, stroke }: Props) => {
                 }
                 fill="none"
                 vectorEffect="non-scaling-stroke"
-                // shapeRendering="crispEdges"
               />
             )}
 
