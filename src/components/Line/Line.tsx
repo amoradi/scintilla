@@ -8,6 +8,7 @@ import { ColorMask } from "../ColorMask";
 import { isRGBA } from "../../shared/utils";
 import { Path } from "../Path";
 import { FillGradient } from "./FillGradient";
+import { StrokeGradient } from "./StrokeGradient";
 
 type Props = { data: Data; fill?: Fill; stroke?: Stroke };
 
@@ -150,29 +151,21 @@ const Line = ({ data, fill, stroke }: Props) => {
 
             {/* --- Gradient --- */}
             {stroke && stroke.color && stroke.color.gradient && (
-              <>
-                <defs>
-                  <GradientMask id={uuid} gradient={stroke.color.gradient} />
-                </defs>
-
-                <Path
-                  clipPath={"none"}
-                  d={d}
-                  stroke={`url(#${uuid})`}
-                  strokeWidth={(stroke && stroke.width) || 0}
-                  strokeDasharray={
-                    (stroke &&
-                      stroke.style &&
-                      stroke.style === "dash" &&
-                      `${((stroke && stroke.width) || 1) * 6} ${((stroke &&
-                        stroke.width) ||
-                        1) * 4}`) ||
-                    "none"
-                  }
-                  fill="none"
-                  vectorEffect="non-scaling-stroke"
-                />
-              </>
+              <StrokeGradient
+                d={d}
+                gradient={stroke.color.gradient}
+                strokeDasharray={
+                  (stroke &&
+                    stroke.style &&
+                    stroke.style === "dash" &&
+                    `${((stroke && stroke.width) || 1) * 6} ${((stroke &&
+                      stroke.width) ||
+                      1) * 4}`) ||
+                  "none"
+                }
+                strokeWidth={(stroke && stroke.width) || 0}
+                uuid={uuid}
+              />
             )}
 
             {/* --- Solid --- */}
