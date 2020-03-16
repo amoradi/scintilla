@@ -1,6 +1,6 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { Frame, Line } from "scintilla";
+import { Frame, Line, Marker } from "scintilla";
 
 export const DefaultLine = ({ codeString, Example }) => {
   return (
@@ -29,6 +29,13 @@ const Master = () => {
     [
       () => (
         <Frame height={40}>
+          <Marker
+            color={[255, 0, 0, 1]}
+            data={[1, 2]}
+            index={0}
+            shape={"circle"}
+            size={5}
+          />
           <Line
             data={[
               40,

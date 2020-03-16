@@ -26,8 +26,8 @@ const Frame = ({ children, height, yRange }: Props) => {
     <svg
       width="100%"
       height={height}
-      viewBox={`0 0 ${viewBox.width} ${viewBox.width}`}
-      preserveAspectRatio="none"
+      // viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
+      // preserveAspectRatio="none"
       style={{ display: "inline" }}
     >
       <FrameContext.Provider value={{ height, viewBox, yRange }}>

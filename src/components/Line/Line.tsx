@@ -48,7 +48,12 @@ const Line = ({ data, fill, stroke }: Props) => {
         let uuidFillGradient;
 
         return (
-          <>
+          <svg
+            width="100%"
+            height={height}
+            viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
+            preserveAspectRatio="none"
+          >
             {/* ========== Fill ========== */}
 
             {/* --- Gradient --- */}
@@ -152,7 +157,7 @@ const Line = ({ data, fill, stroke }: Props) => {
                   mode={"stroke"}
                 />
               )}
-          </>
+          </svg>
         );
       }}
     </FrameContext.Consumer>
