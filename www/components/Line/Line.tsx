@@ -29,13 +29,6 @@ const Master = () => {
     [
       () => (
         <Frame height={40}>
-          <Marker
-            color={[255, 0, 0, 1]}
-            data={[1, 2]}
-            index={0}
-            shape={"circle"}
-            size={5}
-          />
           <Line
             data={[
               40,
@@ -62,6 +55,32 @@ const Master = () => {
               width: 1,
               style: "solid"
             }}
+          />
+          <Marker
+            color={[255, 0, 0, 1]}
+            data={[
+              40,
+              39,
+              37,
+              39,
+              39,
+              40,
+              41,
+              42,
+              43,
+              46,
+              47,
+              48,
+              48,
+              50,
+              49,
+              48,
+              48,
+              49
+            ]}
+            index={18}
+            shape={"circle"}
+            size={5}
           />
         </Frame>
       ),
