@@ -1,14 +1,10 @@
+# scintilla → react sparklines
+
+![sparklines](/plots.png)
+
 [![Build Status](https://travis-ci.org/amoradi/scintilla.svg?branch=master)](https://travis-ci.org/amoradi/scintilla)
 
-<div style="display:flex;align-items:center;">
-  <div style="margin-right: 60px;padding: 0">
-    <h1 style="margin: 0;padding: 0">scintilla</h1>
-    <p style="margin: 0;padding: 0">react sparklines</p>
-  </div>
-  <div>
-    <img style="float: right;" src="/plots.png">
-  </div>
-</div>
+---
 
 ## Demo
 
