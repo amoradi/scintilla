@@ -399,7 +399,7 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
       <style jsx global>{`
         html,
         body {
-          background-color: #fffaf0;
+          background-color: #fff;
           padding: 0;
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
