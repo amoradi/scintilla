@@ -171,7 +171,7 @@ Circular marker positioned at `data[index]`. Make as many as you like.
         ]
       }}
     />
-    {/*  2 red markers, at 5th and last index */}
+    {/* 2 red markers, at 5th and last index */}
     <marker
       data={[-1, 2, 6, 9, 11, 21]}
       color={[255, 0, 0, 1]}
