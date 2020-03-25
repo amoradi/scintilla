@@ -141,9 +141,9 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
 
 ---
 
-### `<Maker />`
+### `<Marker />`
 
-Circular marker shape positioned at `data[index]`. Make as many as you like.
+Circular marker positioned at `data[index]`. Make as many as you like.
 
 - **`data: number[]`**
   The list of `y` data `Marker` will render from.

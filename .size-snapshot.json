@@ -33,7 +33,7 @@
     }
   },
   "build/bundle.esm.js": {
-    "bundled": 11858,
+    "bundled": 11881,
     "minified": 6426,
     "gzipped": 2067,
     "treeshaked": {
@@ -47,7 +47,7 @@
     }
   },
   "build/bundle.js": {
-    "bundled": 12907,
+    "bundled": 12934,
     "minified": 6092,
     "gzipped": 2127
   }
