@@ -5,7 +5,7 @@
       /*!******************************!*\
   !*** ../build/bundle.esm.js ***!
   \******************************/
-      /*! exports provided: Frame, Line */
+      /*! exports provided: Frame, Line, Marker */
       /***/ function(module, __webpack_exports__, __webpack_require__) {
         "use strict";
         __webpack_require__.r(__webpack_exports__);
@@ -21,6 +21,13 @@
           "Line",
           function() {
             return Line;
+          }
+        );
+        /* harmony export (binding) */ __webpack_require__.d(
+          __webpack_exports__,
+          "Marker",
+          function() {
+            return Marker;
           }
         );
         /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
@@ -49,10 +56,10 @@
               "svg",
               {
                 width: "100%",
-                height: b,
-                viewBox: `0 0 ${d.width} ${d.width}`,
-                preserveAspectRatio: "none",
-                style: { display: "inline" }
+                height: b, // viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
+                // preserveAspectRatio="none"
+                style: { display: "inline" },
+                overflow: "visible"
               },
               react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                 FrameContext.Provider,
@@ -117,7 +124,25 @@
             h
           );
         }
-        const GradientMask = ({ id: a, gradient: b }) => {
+        const Path = ({
+            clipPath: a,
+            d: b,
+            fill: c,
+            stroke: d,
+            strokeDasharray: e,
+            strokeWidth: f,
+            vectorEffect: g
+          }) =>
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+              clipPath: a,
+              d: b,
+              fill: c,
+              stroke: d,
+              strokeDasharray: e,
+              strokeWidth: f,
+              vectorEffect: g
+            }),
+          GradientMask = ({ id: a, gradient: b }) => {
             let c = null; // --- many colors ---
             return (
               Array.isArray(b) &&
@@ -151,6 +176,56 @@
               )
             );
           },
+          FillGradient = ({ gradient: a, polygonalD: b, uuid: c }) =>
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
+              null,
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                "defs",
+                null,
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                  GradientMask,
+                  { id: c, gradient: a }
+                )
+              ),
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Path, {
+                clipPath: "none",
+                d: b,
+                fill: `url(#${c})`,
+                stroke: "none",
+                strokeWidth: 0,
+                strokeDasharray: "none",
+                vectorEffect: "non-scaling-stroke"
+              })
+            ),
+          StrokeGradient = ({
+            d: a,
+            gradient: b,
+            strokeDasharray: c,
+            strokeWidth: d,
+            uuid: e
+          }) =>
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
+              null,
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                "defs",
+                null,
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                  GradientMask,
+                  { id: e, gradient: b }
+                )
+              ),
+              react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Path, {
+                clipPath: "none",
+                d: a,
+                stroke: `url(#${e})`,
+                strokeWidth: d,
+                strokeDasharray: c,
+                fill: "none",
+                vectorEffect: "non-scaling-stroke"
+              })
+            ),
           ColorMask = ({ id: a, height: b, width: c, x: d }) =>
             react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
               react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
@@ -193,12 +268,11 @@
                   )
                 ),
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                  "path",
+                  Path,
                   {
                     clipPath: `url(#${j[c]})`,
                     d: b,
-                    stroke: "stroke" === h ? `rgba(${a.join(", ")})` : "none", // strokeLinecap="round"
-                    // strokeLinejoin="round"
+                    stroke: "stroke" === h ? `rgba(${a.join(", ")})` : "none",
                     strokeWidth: g,
                     strokeDasharray:
                       ("dash" === f && `${6 * (g || 1)} ${4 * (g || 1)}`) ||
@@ -212,120 +286,117 @@
           );
         }
         const Line = ({ data: a, fill: b, stroke: c }) =>
-          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-            FrameContext.Consumer,
-            null,
-            ({ height: e, viewBox: f, yRange: g }) => {
-              var h = Math.max,
-                i = Math.min;
-              const j = sanitizeYData(a, g);
-              let [k, l] = g ? g : [i(...j), h(...j)];
-              const m = j.map(a => project(e, { n: a, min: k, max: l })),
-                n = makePoints(m),
-                o = makeD(
-                  n,
-                  f,
-                  g
-                    ? {
-                        min: project(e, { n: k, min: k, max: l }),
-                        max: project(e, { n: l, min: k, max: l })
-                      }
-                    : void 0
-                ),
-                d = makeD(
-                  n,
-                  f,
-                  g
-                    ? {
-                        min: project(e, { n: k, min: k, max: l }),
-                        max: project(e, { n: l, min: k, max: l })
-                      }
-                    : void 0,
-                  !0
-                ),
-                p = Object(uuid__WEBPACK_IMPORTED_MODULE_1__["v1"])();
-              let q;
-              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
-                null,
-                b &&
-                  b.gradient &&
-                  (q = Object(uuid__WEBPACK_IMPORTED_MODULE_1__["v1"])()) &&
-                  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
-                    null,
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+              FrameContext.Consumer,
+              null,
+              ({ height: e, viewBox: f, yRange: g }) => {
+                var h = Math.max,
+                  i = Math.min;
+                const j = sanitizeYData(a, g);
+                let [k, l] = g ? g : [i(...j), h(...j)];
+                const m = j.map(a => project(e, { n: a, min: k, max: l })),
+                  n = makePoints(m),
+                  o = makeD(
+                    n,
+                    f,
+                    g
+                      ? {
+                          min: project(e, { n: k, min: k, max: l }),
+                          max: project(e, { n: l, min: k, max: l })
+                        }
+                      : void 0
+                  ),
+                  d = makeD(
+                    n,
+                    f,
+                    g
+                      ? {
+                          min: project(e, { n: k, min: k, max: l }),
+                          max: project(e, { n: l, min: k, max: l })
+                        }
+                      : void 0,
+                    !0
+                  ),
+                  p = Object(uuid__WEBPACK_IMPORTED_MODULE_1__["v1"])();
+                let q;
+                return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                  "svg",
+                  {
+                    width: "100%",
+                    height: e,
+                    viewBox: `0 0 ${f.width} ${f.height}`,
+                    preserveAspectRatio: "none",
+                    overflow: "visible"
+                  },
+                  b &&
+                    b.gradient &&
+                    (q = Object(uuid__WEBPACK_IMPORTED_MODULE_1__["v1"])()) &&
                     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                      "defs",
-                      null,
-                      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                        GradientMask,
-                        { id: q, gradient: b.gradient }
-                      )
+                      FillGradient,
+                      { gradient: b.gradient, polygonalD: d, uuid: q }
                     ),
+                  b &&
+                    b.solid &&
+                    isRGBA(b.solid) &&
                     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                      "path",
+                      Path,
                       {
+                        clipPath: "none",
                         d: d,
-                        fill: `url(#${q})`,
-                        stroke: "none", // strokeLinecap="round"
-                        // strokeLinejoin="round"
+                        fill: `rgba(${b.solid.join(", ")})`,
+                        stroke: "none",
                         strokeWidth: 0,
                         strokeDasharray: "none",
                         vectorEffect: "non-scaling-stroke"
                       }
-                    )
-                  ),
-                b &&
-                  b.solid &&
-                  isRGBA(b.solid) &&
-                  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    "path",
-                    {
-                      d: d,
-                      fill: `rgba(${b.solid.join(", ")})`,
-                      stroke: "none", // strokeLinecap="round"
-                      // strokeLinejoin="round"
-                      strokeWidth: 0,
-                      strokeDasharray: "none",
-                      vectorEffect: "non-scaling-stroke"
-                    }
-                  ),
-                b &&
-                  b.solid &&
-                  Array.isArray(b.solid) &&
-                  b.solid.every(a => isRGBA(a)) &&
-                  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    MultiSolidColor,
-                    {
-                      color: b.solid,
-                      d: d,
-                      maskHeight: f.height,
-                      viewBoxWidth: f.width,
-                      strokeStyle: "solid",
-                      width: 0,
-                      mode: "fill"
-                    }
-                  ),
-                c &&
-                  c.color &&
-                  c.color.gradient &&
-                  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
-                    null,
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                      "defs",
-                      null,
-                      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                        GradientMask,
-                        { id: p, gradient: c.color.gradient }
-                      )
                     ),
+                  b &&
+                    b.solid &&
+                    Array.isArray(b.solid) &&
+                    b.solid.every(a => isRGBA(a)) &&
                     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                      "path",
+                      MultiSolidColor,
+                      {
+                        color: b.solid,
+                        d: d,
+                        maskHeight: f.height,
+                        viewBoxWidth: f.width,
+                        strokeStyle: "solid",
+                        width: 0,
+                        mode: "fill"
+                      }
+                    ),
+                  c &&
+                    c.color &&
+                    c.color.gradient &&
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                      StrokeGradient,
                       {
                         d: o,
-                        stroke: `url(#${p})`, // strokeLinecap="round"
-                        // strokeLinejoin="round"
+                        gradient: c.color.gradient,
+                        strokeDasharray:
+                          (c &&
+                            c.style &&
+                            "dash" === c.style &&
+                            `${6 * ((c && c.width) || 1)} ${4 *
+                              ((c && c.width) || 1)}`) ||
+                          "none",
+                        strokeWidth: (c && c.width) || 0,
+                        uuid: p
+                      }
+                    ),
+                  c &&
+                    c.color &&
+                    isRGBA(c.color.solid) &&
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                      Path,
+                      {
+                        clipPath: "none",
+                        d: o,
+                        stroke: `rgba(${c &&
+                          c.color &&
+                          c.color.solid &&
+                          c.color.solid.join(", ")})`,
                         strokeWidth: (c && c.width) || 0,
                         strokeDasharray:
                           (c &&
@@ -337,51 +408,95 @@
                         fill: "none",
                         vectorEffect: "non-scaling-stroke"
                       }
+                    ),
+                  c &&
+                    c.color &&
+                    Array.isArray(c.color.solid) &&
+                    c.color.solid.every(a => isRGBA(a)) &&
+                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                      MultiSolidColor,
+                      {
+                        color: c.color.solid,
+                        d: o,
+                        maskHeight: f.height,
+                        viewBoxWidth: f.width,
+                        strokeStyle: c.style,
+                        width: c.width,
+                        mode: "stroke"
+                      }
                     )
-                  ),
-                c &&
-                  c.color &&
-                  isRGBA(c.color.solid) &&
-                  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    "path",
-                    {
-                      d: o,
-                      stroke: `rgba(${c &&
-                        c.color &&
-                        c.color.solid &&
-                        c.color.solid.join(", ")})`, // strokeLinecap="round"
-                      // strokeLinejoin="round"
-                      strokeWidth: (c && c.width) || 0,
-                      strokeDasharray:
-                        (c &&
-                          c.style &&
-                          "dash" === c.style &&
-                          `${6 * ((c && c.width) || 1)} ${4 *
-                            ((c && c.width) || 1)}`) ||
-                        "none",
-                      fill: "none",
-                      vectorEffect: "non-scaling-stroke"
+                );
+              }
+            ),
+          Circle = ({ color: a, size: b }) =>
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+              "circle",
+              { cx: b / 2, cy: b / 2, r: b / 2, fill: `rgba(${a.join(", ")})` }
+            ),
+          defaults$1 = {
+            color: [255, 0, 0, 1],
+            index: null,
+            shape: "circle",
+            size: 3
+          },
+          Marker = ({ color: a, data: b, index: c, shape: d, size: e }) =>
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+              FrameContext.Consumer,
+              null,
+              ({ height: f, yRange: g }) => {
+                var h = Math.max,
+                  i = Math.min; // limit marker size for now
+                // TODO: possibly revist this at a later date
+                //size = Math.min(size, 5);
+                const j = Object(uuid__WEBPACK_IMPORTED_MODULE_1__["v1"])(),
+                  k = b.length - 1,
+                  l = null === c ? k : i(c, k),
+                  m = sanitizeYData(b, g);
+                let [n, o] = g ? g : [i(...m), h(...m)];
+                const p = m.map(a => project(f, { n: a, min: n, max: o })),
+                  q = makePoints(p),
+                  r = (() => {
+                    let b;
+                    switch (d) {
+                      case "circle": {
+                        b = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                          Circle,
+                          { color: a, size: e }
+                        );
+                        break;
+                      } // case 'square': {
+                      //   shape_ = <div />
+                      //   break;
+                      // }
+                      default:
+                        b = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                          Circle,
+                          { color: a, size: e }
+                        );
                     }
-                  ),
-                c &&
-                  c.color &&
-                  Array.isArray(c.color.solid) &&
-                  c.color.solid.every(a => isRGBA(a)) &&
+                    return b;
+                  })(),
+                  s =
+                    0 === l
+                      ? `0`
+                      : `calc(${100 * (l / k)}% - ${e / (l === k ? 1 : 2)})`,
+                  t = `${f - q[l][1] - e / 2}`;
+                return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                  react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment,
+                  null,
                   react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
-                    MultiSolidColor,
-                    {
-                      color: c.color.solid,
-                      d: o,
-                      maskHeight: f.height,
-                      viewBoxWidth: f.width,
-                      strokeStyle: c.style,
-                      width: c.width,
-                      mode: "stroke"
-                    }
+                    "symbol",
+                    { id: j, viewBox: "0 0 10 10", width: "10", height: "10" },
+                    r
+                  ),
+                  react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
+                    "use",
+                    { href: `#${j}`, x: s, y: t }
                   )
-              );
-            }
-          );
+                );
+              }
+            );
+        Marker.defaultProps = Object.assign({}, defaults$1);
 
         /***/
       },
@@ -3876,9 +3991,39 @@
                       lineNumber: 32
                     },
                     __self: undefined
+                  }),
+                  __jsx(scintilla__WEBPACK_IMPORTED_MODULE_3__["Marker"], {
+                    color: [255, 0, 0, 1],
+                    data: [
+                      40,
+                      39,
+                      37,
+                      39,
+                      39,
+                      40,
+                      41,
+                      42,
+                      43,
+                      46,
+                      47,
+                      48,
+                      48,
+                      50,
+                      49,
+                      48,
+                      48,
+                      49
+                    ],
+                    index: 17,
+                    size: 4,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 59
+                    },
+                    __self: undefined
                   })
                 ),
-              '\n    <Frame height={40}>\n      <Line\n        data={[40, 39, 37, 39, 39, 40, 41, 42, 43, 46, 47, 48, 48, 50, 49, 48, 48, 49]}\n        stroke={{\n          color: { solid: [20, 20, 20, 1] },\n          width: 1,\n          style: "solid"\n        }}\n      />\n    </Frame>\n  '
+              '\n    <Frame height={40}>\n      <Line\n        data={[40, 39, 37, 39, 39, 40, 41, 42, 43, 46, 47, 48, 48, 50, 49, 48, 48, 49]}\n        stroke={{\n          color: { solid: [20, 20, 20, 1] },\n          width: 1,\n          style: "solid"\n        }}\n      />\n      <Marker\n        color={[255, 0, 0, 1]}\n        data={[40, 39, 37, 39, 39, 40, 41, 42, 43, 46, 47, 48, 48, 50, 49, 48, 48, 49]}\n        size={4}\n      />\n    </Frame>\n  '
             ],
             [
               () =>
@@ -3888,7 +4033,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 76
+                      lineNumber: 106
                     },
                     __self: undefined
                   },
@@ -3922,7 +4067,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 77
+                      lineNumber: 107
                     },
                     __self: undefined
                   })
@@ -3937,7 +4082,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 121
+                      lineNumber: 151
                     },
                     __self: undefined
                   },
@@ -3971,7 +4116,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 122
+                      lineNumber: 152
                     },
                     __self: undefined
                   })
@@ -3986,7 +4131,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 166
+                      lineNumber: 196
                     },
                     __self: undefined
                   },
@@ -4024,7 +4169,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 167
+                      lineNumber: 197
                     },
                     __self: undefined
                   })
@@ -4039,7 +4184,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 217
+                      lineNumber: 247
                     },
                     __self: undefined
                   },
@@ -4076,7 +4221,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 218
+                      lineNumber: 248
                     },
                     __self: undefined
                   })
@@ -4091,7 +4236,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 267
+                      lineNumber: 297
                     },
                     __self: undefined
                   },
@@ -4125,7 +4270,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 268
+                      lineNumber: 298
                     },
                     __self: undefined
                   })
@@ -4140,7 +4285,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 312
+                      lineNumber: 342
                     },
                     __self: undefined
                   },
@@ -4174,12 +4319,72 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 313
+                      lineNumber: 343
+                    },
+                    __self: undefined
+                  }),
+                  __jsx(scintilla__WEBPACK_IMPORTED_MODULE_3__["Marker"], {
+                    data: [
+                      40,
+                      39,
+                      37,
+                      39,
+                      39,
+                      40,
+                      41,
+                      42,
+                      43,
+                      46,
+                      47,
+                      48,
+                      48,
+                      50,
+                      49,
+                      48,
+                      48,
+                      49
+                    ],
+                    color: [255, 0, 0, 1],
+                    size: 5,
+                    index: 5,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 370
+                    },
+                    __self: undefined
+                  }),
+                  __jsx(scintilla__WEBPACK_IMPORTED_MODULE_3__["Marker"], {
+                    data: [
+                      40,
+                      39,
+                      37,
+                      39,
+                      39,
+                      40,
+                      41,
+                      42,
+                      43,
+                      46,
+                      47,
+                      48,
+                      48,
+                      50,
+                      49,
+                      48,
+                      48,
+                      49
+                    ],
+                    color: [255, 0, 0, 1],
+                    size: 5,
+                    index: 14,
+                    __source: {
+                      fileName: _jsxFileName,
+                      lineNumber: 395
                     },
                     __self: undefined
                   })
                 ),
-              '\n    <Frame height={40}>\n      <Line\n        data={[40, 39, 37, 39, 39, 40, 41, 42, 43, 46, 47, 48, 48, 50, 49, 48, 48, 49]}\n        stroke={{\n          color: { solid: [255, 0, 0, 1] },\n          width: 1,\n          style: "dash"\n        }}\n      />\n    </Frame>\n  '
+              '\n    <Frame height={40}>\n      <Line\n        data={[40, 39, 37, 39, 39, 40, 41, 42, 43, 46, 47, 48, 48, 50, 49, 48, 48, 49]}\n        stroke={{\n          color: { solid: [255, 0, 0, 1] },\n          width: 1,\n          style: "dash"\n        }}\n      />\n      <Marker\n        data={[40, 39, 37, 39, 39, 40, 41, 42, 43, 46, 47, 48, 48, 50, 49, 48, 48, 49]}\n        color={[255,0,0,1]}\n        size={5}\n        index={5}\n      />\n      <Marker\n        data={[40, 39, 37, 39, 39, 40, 41, 42, 43, 46, 47, 48, 48, 50, 49, 48, 48, 49]}\n        color={[255,0,0,1]}\n        size={5}\n        index={14}\n      />\n    </Frame>\n  '
             ],
             [
               () =>
@@ -4189,7 +4394,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 357
+                      lineNumber: 449
                     },
                     __self: undefined
                   },
@@ -4227,7 +4432,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 358
+                      lineNumber: 450
                     },
                     __self: undefined
                   })
@@ -4242,7 +4447,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 408
+                      lineNumber: 500
                     },
                     __self: undefined
                   },
@@ -4279,7 +4484,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 409
+                      lineNumber: 501
                     },
                     __self: undefined
                   })
@@ -4294,7 +4499,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 458
+                      lineNumber: 550
                     },
                     __self: undefined
                   },
@@ -4331,7 +4536,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 459
+                      lineNumber: 551
                     },
                     __self: undefined
                   })
@@ -4346,7 +4551,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 505
+                      lineNumber: 597
                     },
                     __self: undefined
                   },
@@ -4383,7 +4588,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 506
+                      lineNumber: 598
                     },
                     __self: undefined
                   })
@@ -4399,7 +4604,7 @@
                     yRange: [34, 50],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 552
+                      lineNumber: 644
                     },
                     __self: undefined
                   },
@@ -4436,7 +4641,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 553
+                      lineNumber: 645
                     },
                     __self: undefined
                   })
@@ -4452,7 +4657,7 @@
                     yRange: [34, 50],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 599
+                      lineNumber: 691
                     },
                     __self: undefined
                   },
@@ -4486,7 +4691,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 600
+                      lineNumber: 692
                     },
                     __self: undefined
                   })
@@ -4502,7 +4707,7 @@
                     yRange: [34, 50],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 642
+                      lineNumber: 734
                     },
                     __self: undefined
                   },
@@ -4535,7 +4740,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 643
+                      lineNumber: 735
                     },
                     __self: undefined
                   })
@@ -4551,7 +4756,7 @@
                     yRange: [34, 50],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 684
+                      lineNumber: 776
                     },
                     __self: undefined
                   },
@@ -4585,7 +4790,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 685
+                      lineNumber: 777
                     },
                     __self: undefined
                   })
@@ -4601,7 +4806,7 @@
                     yRange: [34, 54],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 727
+                      lineNumber: 819
                     },
                     __self: undefined
                   },
@@ -4631,7 +4836,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 728
+                      lineNumber: 820
                     },
                     __self: undefined
                   }),
@@ -4661,7 +4866,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 751
+                      lineNumber: 843
                     },
                     __self: undefined
                   })
@@ -4676,7 +4881,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 791
+                      lineNumber: 883
                     },
                     __self: undefined
                   },
@@ -4710,7 +4915,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 792
+                      lineNumber: 884
                     },
                     __self: undefined
                   }),
@@ -4725,7 +4930,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 819
+                      lineNumber: 911
                     },
                     __self: undefined
                   })
@@ -4741,7 +4946,7 @@
                     yRange: [35, 50],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 852
+                      lineNumber: 944
                     },
                     __self: undefined
                   },
@@ -4752,7 +4957,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 853
+                      lineNumber: 945
                     },
                     __self: undefined
                   }),
@@ -4786,7 +4991,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 857
+                      lineNumber: 949
                     },
                     __self: undefined
                   })
@@ -4802,7 +5007,7 @@
                     yRange: [32, 60],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 905
+                      lineNumber: 997
                     },
                     __self: undefined
                   },
@@ -4836,7 +5041,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 906
+                      lineNumber: 998
                     },
                     __self: undefined
                   }),
@@ -4851,7 +5056,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 933
+                      lineNumber: 1025
                     },
                     __self: undefined
                   }),
@@ -4866,7 +5071,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 941
+                      lineNumber: 1033
                     },
                     __self: undefined
                   })
@@ -4882,7 +5087,7 @@
                     yRange: [34, 50],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 982
+                      lineNumber: 1074
                     },
                     __self: undefined
                   },
@@ -4916,7 +5121,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 983
+                      lineNumber: 1075
                     },
                     __self: undefined
                   }),
@@ -4931,7 +5136,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1010
+                      lineNumber: 1102
                     },
                     __self: undefined
                   })
@@ -4946,7 +5151,7 @@
                     height: 40,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1043
+                      lineNumber: 1135
                     },
                     __self: undefined
                   },
@@ -4976,7 +5181,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1044
+                      lineNumber: 1136
                     },
                     __self: undefined
                   }),
@@ -4987,7 +5192,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1067
+                      lineNumber: 1159
                     },
                     __self: undefined
                   })
@@ -5003,7 +5208,7 @@
                     yRange: [34, 50],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1088
+                      lineNumber: 1180
                     },
                     __self: undefined
                   },
@@ -5033,7 +5238,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1089
+                      lineNumber: 1181
                     },
                     __self: undefined
                   }),
@@ -5044,7 +5249,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1112
+                      lineNumber: 1204
                     },
                     __self: undefined
                   })
@@ -5060,7 +5265,7 @@
                     yRange: [34, 50],
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1130
+                      lineNumber: 1222
                     },
                     __self: undefined
                   },
@@ -5090,7 +5295,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1131
+                      lineNumber: 1223
                     },
                     __self: undefined
                   }),
@@ -5104,7 +5309,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1154
+                      lineNumber: 1246
                     },
                     __self: undefined
                   }),
@@ -5115,7 +5320,7 @@
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 1163
+                      lineNumber: 1255
                     },
                     __self: undefined
                   })

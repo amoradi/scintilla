@@ -29,6 +29,7 @@ const Frame = ({ children, height, yRange }: Props) => {
       // viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
       // preserveAspectRatio="none"
       style={{ display: "inline" }}
+      overflow="visible"
     >
       <FrameContext.Provider value={{ height, viewBox, yRange }}>
         {children}

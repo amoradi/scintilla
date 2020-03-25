@@ -139,6 +139,50 @@ Plot your series data as a line. Style line with `stroke`, `fill` or both.
 </div>
 ```
 
+---
+
+### `<Maker />`
+
+Circular marker shape positioned at `data[index]`. Make as many as you like.
+
+- **`data: number[]`**
+  The list of `y` data `Marker` will render from.
+
+- **`color?: RGBA`**
+  The rgba fill color. Defaults to red.
+
+- **`index?: number`**
+  position marker at `data[index]`. If ommited, defaults to last index.
+
+- **`size?: number<1-10>`**
+  Diameter of `Marker` circle in pixels. Defaults to `4px`.
+
+**Example**
+
+```jsx
+<div style={{ width: "100px" }}>
+  <Frame>
+    <Line
+      data={[-1, 2, 6, 9, 11, 21]}
+      fill={{
+        gradient: [
+          [255, 0, 0, 0.1],
+          [255, 0, 0, 1]
+        ]
+      }}
+    />
+    {/*  2 red markers, at 5th and last index */}
+    <marker
+      data={[-1, 2, 6, 9, 11, 21]}
+      color={[255, 0, 0, 1]}
+      size={5}
+      index={5}
+    />
+    <marker data={[-1, 2, 6, 9, 11, 21]} color={[255, 0, 0, 1]} size={5} />
+  </Frame>
+</div>
+```
+
 ## Examples
 
 See: https://amoradi.github.io/scintilla

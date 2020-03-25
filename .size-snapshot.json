@@ -33,12 +33,12 @@
     }
   },
   "build/bundle.esm.js": {
-    "bundled": 11558,
-    "minified": 6375,
-    "gzipped": 2044,
+    "bundled": 11858,
+    "minified": 6426,
+    "gzipped": 2067,
     "treeshaked": {
       "rollup": {
-        "code": 1290,
+        "code": 1303,
         "import_statements": 47
       },
       "webpack": {
@@ -47,8 +47,8 @@
     }
   },
   "build/bundle.js": {
-    "bundled": 12593,
-    "minified": 6041,
-    "gzipped": 2107
+    "bundled": 12907,
+    "minified": 6092,
+    "gzipped": 2127
   }
 }

@@ -53,6 +53,7 @@ const Line = ({ data, fill, stroke }: Props) => {
             height={height}
             viewBox={`0 0 ${viewBox.width} ${viewBox.height}`}
             preserveAspectRatio="none"
+            overflow="visible"
           >
             {/* ========== Fill ========== */}
 

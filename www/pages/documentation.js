@@ -46,7 +46,7 @@ type Stroke = {
   color: Color;
 };`}
             </SyntaxHighlighter>
-            <h2>frame</h2>
+            <h2>Frame</h2>
             <p>
               Responsive container for all data-needy child components. wrap
               frame in your own container to constrain width.
@@ -67,7 +67,7 @@ yRange?: [min<number>, max<number>]
 </div>
 `}
             </SyntaxHighlighter>
-            <h2>line</h2>
+            <h2>Line</h2>
             <p>
               Plot your series data as a line. Style line with stroke, fill or
               both.
@@ -104,6 +104,49 @@ fill?: Color
           [255, 0, 0, 1]
         ]
       }}
+    />
+  </Frame>
+</div>
+`}
+            </SyntaxHighlighter>
+            <h2>Marker</h2>
+            <p>Circular marker positioned at data[index].</p>
+            <SyntaxHighlighter language="tsx" style={prism}>
+              {`// the list of y data marker will render from
+data: number[]
+
+// rgba fill color
+color: RGBA
+
+// position marker at data[index]. if ommited, defaults to last index.
+index: number
+
+// diameter of marker circle in pixels
+size: numer<1-10>
+
+// example
+<div style={{ width: '100px' }}>
+  <Frame>
+    <Line
+      data={[-1, 2, 6, 9, 11, 21]}
+      fill={{
+        gradient: [
+          [255, 0, 0, 0.1],
+          [255, 0, 0, 1]
+        ]
+      }}
+    />
+    {/* 2 red markers, at 5th and last index */}
+    <marker
+      data={[-1, 2, 6, 9, 11, 21]}
+      color={[255,0,0,1]}
+      size={5}
+      index={5}
+    />
+    <marker
+      data={[-1, 2, 6, 9, 11, 21]}
+      color={[255,0,0,1]}
+      size={5}
     />
   </Frame>
 </div>
