@@ -46,7 +46,7 @@ const RedLine = () => (
 - composeable: mix and match as many `Line`'s within a single `Frame`
 - `SVG`-based
 - flexible intra-data color options
-- responsive width. Wrap `Frame` in your own container to constrain width.
+- fluid width. Wrap `Frame` in your own container to constrain width.
 
 ## API
 
