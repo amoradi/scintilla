@@ -71,7 +71,7 @@ const Marker: React.FC<Props> = ({ color, data, index, shape, size }) => {
           index_ === 0
             ? `0`
             : `calc(${(index_ / lastIndex) * 100}% - ${size /
-                (isLast ? 1 : 2)})`;
+                (isLast ? 1 : 2)}px)`;
         const y = `${height - points[index_][1] - size / 2}`;
 
         return (
