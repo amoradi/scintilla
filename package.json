@@ -1,7 +1,7 @@
 {
   "name": "scintilla",
   "description": "React sparklines 📈",
-  "version": "0.6.0",
+  "version": "0.7.1",
   "private": false,
   "author": "Aaron Moradi <moradi.aaron@gmail.com> (https://github.com/amoradi)",
   "license": "MIT",

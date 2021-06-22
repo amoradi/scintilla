@@ -365,7 +365,7 @@
   \*******************************************************/
       /*! no static exports found */
       /***/ function(module, exports) {
-        var core = (module.exports = { version: "2.6.11" });
+        var core = (module.exports = { version: "2.6.12" });
         if (typeof __e == "number") __e = core; // eslint-disable-line no-undef
 
         /***/
@@ -1770,7 +1770,7 @@
           )
             ? "pure"
             : "global",
-          copyright: "© 2019 Denis Pushkarev (zloirock.ru)"
+          copyright: "© 2020 Denis Pushkarev (zloirock.ru)"
         });
 
         /***/

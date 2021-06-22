@@ -5341,10 +5341,10 @@ schema-utils@^2.0.0, schema-utils@^2.0.1, schema-utils@^2.6.0, schema-utils@^2.6
     ajv "^6.12.4"
     ajv-keywords "^3.5.2"
 
-scintilla@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/scintilla/-/scintilla-0.6.0.tgz#8ea1a00df89ec9fa9ed293d1c1951671fcaf0091"
-  integrity sha512-kZQS1XeYwwDcba9Qtkf+jk3hoXANUtea4ey8a6afP/yRuMOe0XYfUO4qY4WugODqJw6duQHEHMMR6DTBLga89w==
+scintilla@^0.7.0:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/scintilla/-/scintilla-0.7.1.tgz#48cfeb27baca2d764c93f51bfbefe9f428e54894"
+  integrity sha512-IwW2eAJsBZdYCIQkx/oS6gM+MdajIFW7qi9Cyzy32kmg/KV1GWAcQkPZDun7L3+AwhNHt2QTLw6buZ5JygfgeQ==
   dependencies:
     uuid "^3.4.0"
 

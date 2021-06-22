@@ -15,6 +15,6 @@
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-syntax-highlighter": "^12.2.1",
-    "scintilla": "^0.6.0"
+    "scintilla": "^0.7.1"
   }
 }

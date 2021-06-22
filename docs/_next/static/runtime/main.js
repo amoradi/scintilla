@@ -1118,7 +1118,7 @@
   \*******************************************************/
       /*! no static exports found */
       /***/ function(module, exports) {
-        var core = (module.exports = { version: "2.6.11" });
+        var core = (module.exports = { version: "2.6.12" });
         if (typeof __e == "number") __e = core; // eslint-disable-line no-undef
 
         /***/
@@ -2937,7 +2937,7 @@
           )
             ? "pure"
             : "global",
-          copyright: "© 2019 Denis Pushkarev (zloirock.ru)"
+          copyright: "© 2020 Denis Pushkarev (zloirock.ru)"
         });
 
         /***/
@@ -4794,12 +4794,12 @@
 
     /***/ "./node_modules/next/dist/build/polyfills/object-assign.js":
       /*!***********************************************************************************************************************!*\
-  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_82519ec661270f7f484f ***!
+  !*** delegated ./node_modules/next/dist/build/polyfills/object-assign.js from dll-reference dll_b29684ed772f9fa2503e ***!
   \***********************************************************************************************************************/
       /*! no static exports found */
       /***/ function(module, exports, __webpack_require__) {
         module.exports = __webpack_require__(
-          /*! dll-reference dll_82519ec661270f7f484f */ "dll-reference dll_82519ec661270f7f484f"
+          /*! dll-reference dll_b29684ed772f9fa2503e */ "dll-reference dll_b29684ed772f9fa2503e"
         )("./node_modules/next/dist/build/polyfills/object-assign.js");
 
         /***/
@@ -5348,7 +5348,7 @@ SOFTWARE.
 
               (0, _sourceMapSupport.rewriteStacktrace)(
                 error,
-                "/Users/aaronmoradi/Documents/projects/scintilla/www/.next"
+                "/home/t450/Documents/projects/scintilla/www/.next"
               );
               return error;
             }
@@ -10915,12 +10915,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     /***/ "./node_modules/react-dom/index.js":
       /*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_82519ec661270f7f484f ***!
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_b29684ed772f9fa2503e ***!
   \***********************************************************************************************/
       /*! no static exports found */
       /***/ function(module, exports, __webpack_require__) {
         module.exports = __webpack_require__(
-          /*! dll-reference dll_82519ec661270f7f484f */ "dll-reference dll_82519ec661270f7f484f"
+          /*! dll-reference dll_b29684ed772f9fa2503e */ "dll-reference dll_b29684ed772f9fa2503e"
         )("./node_modules/react-dom/index.js");
 
         /***/
@@ -14323,12 +14323,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     /***/ "./node_modules/react/index.js":
       /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_82519ec661270f7f484f ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_b29684ed772f9fa2503e ***!
   \*******************************************************************************************/
       /*! no static exports found */
       /***/ function(module, exports, __webpack_require__) {
         module.exports = __webpack_require__(
-          /*! dll-reference dll_82519ec661270f7f484f */ "dll-reference dll_82519ec661270f7f484f"
+          /*! dll-reference dll_b29684ed772f9fa2503e */ "dll-reference dll_b29684ed772f9fa2503e"
         )("./node_modules/react/index.js");
 
         /***/
@@ -15198,13 +15198,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         /***/
       },
 
-    /***/ "dll-reference dll_82519ec661270f7f484f":
+    /***/ "dll-reference dll_b29684ed772f9fa2503e":
       /*!*******************************************!*\
-  !*** external "dll_82519ec661270f7f484f" ***!
+  !*** external "dll_b29684ed772f9fa2503e" ***!
   \*******************************************/
       /*! no static exports found */
       /***/ function(module, exports) {
-        module.exports = dll_82519ec661270f7f484f;
+        module.exports = dll_b29684ed772f9fa2503e;
 
         /***/
       }
