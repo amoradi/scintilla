@@ -2,7 +2,7 @@
 
 ![sparklines](./scintilla-sparklines.png)
 
-[![Build Status](https://travis-ci.org/amoradi/scintilla.svg?branch=master)](https://travis-ci.org/amoradi/scintilla)
+[![Node.js CI](https://github.com/amoradi/scintilla/actions/workflows/node.js.yml/badge.svg)](https://github.com/amoradi/scintilla/actions/workflows/node.js.yml)
 
 ---
 
