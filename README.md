@@ -18,6 +18,12 @@ $ or
 $ npm install scintilla --save
 ```
 
+## Donate
+
+BTC: `bc1qejny2ddag2phmyndq78hq2uxuxkh38t5v4k9mt`
+
+ETH: `0x16cC9a598a3817F32c5B794C9391B14Ff93bd87e`
+
 ## Quick Start
 
 ```jsx
