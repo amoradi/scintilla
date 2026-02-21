@@ -16,6 +16,8 @@ Donate:
 
 ## Install
 
+https://www.npmjs.com/package/scintilla
+
 ```bash
 $ yarn add scintilla
 $ or
